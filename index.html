@@ -401,6 +401,32 @@
     .ft-links a:hover { color: var(--orange); text-decoration: none; }
     .ft-copy { font-family: var(--mono); font-size: 0.64rem; color: var(--text-4); margin-top: 10px; }
 
+    /* ── Callout annotation ── */
+    .callout {
+      display: flex; align-items: flex-start; gap: 0;
+      justify-content: flex-end;
+      margin-top: 16px; padding-right: 20px;
+      animation: fadeCallout 0.8s ease-out 0.5s both;
+    }
+    .callout-arrow { display: block; flex-shrink: 0; margin-top: 2px; }
+    .callout-text {
+      font-family: var(--mono); text-align: left;
+      padding-top: 38px;
+    }
+    .callout-text span {
+      display: block; font-size: 0.82rem; font-weight: 700;
+      color: var(--orange);
+    }
+    .callout-text .callout-sub {
+      font-size: 0.7rem; font-weight: 500;
+      color: var(--text-3); margin-top: 3px;
+      line-height: 1.5;
+    }
+    @keyframes fadeCallout {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     /* ── Responsive ── */
     @media (max-width: 768px) {
       .tgrid { grid-template-columns: 1fr; }
@@ -411,6 +437,9 @@
       .hero { padding: 115px 0 50px; }
       .ftabs { gap: 6px; }
       .ftab { font-size: 0.65rem; padding: 6px 10px; }
+      .callout { justify-content: center; padding-right: 0; }
+      .callout-arrow { width: 80px; height: 50px; }
+      .callout-text { padding-top: 24px; text-align: center; }
       .mock-sidebar { display: none; }
       .mock-main { margin-left: 0; }
     }
@@ -442,7 +471,7 @@
   <section class="hero">
     <div class="w">
       <div class="hero-eyebrow">#1 net profit analytics for Shopify</div>
-      <h1>Stop guessing your Shopify profits</h1>
+      <h1>Stop guessing your <em>Shopify profits</em></h1>
       <p class="hero-sub">Dashboard, profit-tracking, product analytics, ad attribution, and everything else you need to see your true bottom line.</p>
 
       <div class="cb tcta">
@@ -462,6 +491,28 @@
       </div>
     </div>
   </section>
+
+    <!-- Truth -->
+  <section class="sec">
+    <div class="w">
+      <div class="sec-label">THE TRUTH</div>
+      <h2>Net profit is the only metric<br/>that <em>actually</em> matters</h2>
+      <p class="sec-sub">Revenue looks great — until you subtract everything.</p>
+
+      <div style="margin-top:32px;">
+        <div class="cb">
+          <div class="cb-top">
+            <span class="cb-dot r"></span><span class="cb-dot y"></span><span class="cb-dot g"></span>
+            <span class="cb-tab">profit-waterfall.json</span>
+          </div>
+          <div class="cb-body" style="padding:8px 0;">
+            <div class="frow"><span class="l">Gross Revenue</span><span class="v">$50,000</span></div>
+            <div class="frow neg"><span class="l">– Cost of Goods</span><span class="v">−$15,000</span></div>
+            <div class="frow neg"><span class="l">– Shipping & Fees</span><span class="v">−$6,200</span></div>
+            <div class="frow neg"><span class="l">– Ad Spend</span><span class="v">−$12,300</span></div>
+            <div class="frow net"><span class="l">= Net Profit</span><span class="v">$16,500</span></div>
+          </div>
+        </div>
 
   <!-- Features -->
   <section class="sec" id="features">
@@ -493,24 +544,16 @@
     </div>
   </section>
 
-  <!-- Truth -->
-  <section class="sec">
-    <div class="w">
-      <div class="sec-label">THE TRUTH</div>
-      <h2>Net profit is the only metric<br/>that <em>actually</em> matters</h2>
-      <p class="sec-sub">Revenue looks great — until you subtract everything.</p>
-
-      <div class="cb" style="margin-top:32px;">
-        <div class="cb-top">
-          <span class="cb-dot r"></span><span class="cb-dot y"></span><span class="cb-dot g"></span>
-          <span class="cb-tab">profit-waterfall.json</span>
-        </div>
-        <div class="cb-body" style="padding:8px 0;">
-          <div class="frow"><span class="l">Gross Revenue</span><span class="v">$50,000</span></div>
-          <div class="frow neg"><span class="l">– Cost of Goods</span><span class="v">−$15,000</span></div>
-          <div class="frow neg"><span class="l">– Shipping & Fees</span><span class="v">−$6,200</span></div>
-          <div class="frow neg"><span class="l">– Ad Spend</span><span class="v">−$12,300</span></div>
-          <div class="frow net"><span class="l">= Net Profit</span><span class="v">$16,500</span></div>
+        <!-- Callout annotation -->
+        <div class="callout">
+          <svg class="callout-arrow" width="120" height="80" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 4 C12 28, 35 52, 80 62" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" fill="none" />
+            <path d="M72 56 L80 62 L72 66" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+          </svg>
+          <div class="callout-text">
+            <span>This is what matters.</span>
+            <span class="callout-sub">Shopify reports & spreadsheets<br/>can't track this accurately.</span>
+          </div>
         </div>
       </div>
     </div>
