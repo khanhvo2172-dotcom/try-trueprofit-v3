@@ -54,7 +54,7 @@
     a { color: var(--orange); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    .w { max-width: var(--max-w); margin: 0 auto; padding: 0 0px; }
+    .w { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
     .w-wide { max-width: var(--max-w-wide); margin: 0 auto; padding: 0 24px; }
 
     /* ── Nav ── */
@@ -774,6 +774,8 @@
       "./images/ltv-tracking-dashboard-2.png",
       "./images/trueprofit-general-dashboard-1.png"
     ];
+    // Preload all feature images
+    imgs.forEach(src => { const img = new Image(); img.src = src; });
     document.querySelectorAll('.ftab').forEach(t => {
       t.addEventListener('click', () => {
         document.querySelectorAll('.ftab').forEach(x => x.classList.remove('on'));
