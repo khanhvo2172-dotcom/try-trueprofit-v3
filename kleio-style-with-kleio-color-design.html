@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TrueProfit — #1 Net Profit Analytics for Shopify</title>
+  <meta name="description" content="Real-time net profit tracking for Shopify. COGS, shipping, ads, fees — see your true bottom line." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-K56KZRDH');</script>
+  <!-- End Google Tag Manager -->
+
+  <style>
+    :root {
+      --bg: #f6f5f0;
+      --bg-card: #ffffff;
+      --bg-mockup: #fafaf8;
+      --border: #e0ddd5;
+      --border-light: #eae8e2;
+      --text: #1a1a1a;
+      --text-2: #5c5c5c;
+      --text-3: #8a8a8a;
+      --text-4: #b0b0b0;
+      --orange: #e07830;
+      --orange-dim: rgba(224,120,48,0.08);
+      --green: #2ea44f;
+      --red: #e05050;
+      --mono: 'JetBrains Mono', monospace;
+      --sans: 'Inter', -apple-system, sans-serif;
+      --max-w: 820px;
+      --max-w-wide: 1060px;
+      --r: 10px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: var(--orange-dim); color: var(--orange); }
+    a { color: var(--orange); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .w { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+    .w-wide { max-width: var(--max-w-wide); margin: 0 auto; padding: 0 24px; }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 99;
+      background: rgba(246,245,240,0.92);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      height: 54px;
+    }
+    .nav-inner {
+      max-width: var(--max-w); margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; height: 54px; gap: 28px;
+    }
+    .nav-brand {
+      font-family: var(--mono); font-weight: 700; font-size: 0.9rem;
+      color: var(--text); text-decoration: none;
+      display: flex; align-items: center; gap: 8px;
+      margin-right: auto;
+    }
+    .nav-mark {
+      width: 26px; height: 26px; border-radius: 5px;
+      background: var(--orange); color: #fff;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 0.72rem; font-weight: 800;
+    }
+    nav a:not(.nav-brand) {
+      font-size: 0.82rem; color: var(--text-2); text-decoration: none;
+    }
+    nav a:not(.nav-brand):hover { color: var(--text); text-decoration: none; }
+    .nav-get {
+      font-family: var(--mono); font-size: 0.75rem; font-weight: 600;
+      background: var(--text); color: var(--bg) !important; padding: 5px 14px;
+      border-radius: 5px;
+    }
+    .nav-get:hover { background: #333; }
+
+    /* ── Hero ── */
+    .hero { padding: 140px 0 80px; text-align: center; }
+    .hero-eyebrow {
+      font-family: var(--mono); font-size: 0.72rem; color: var(--text-3);
+      margin-bottom: 22px;
+    }
+    .hero h1 {
+      font-family: var(--mono); font-weight: 700;
+      font-size: clamp(2rem, 4.5vw, 2.9rem); line-height: 1.2;
+      letter-spacing: -0.02em; margin-bottom: 18px;
+    }
+    .hero-sub {
+      font-family: var(--mono); font-size: 0.92rem; color: var(--text-2);
+      max-width: 560px; margin: 0 auto 36px; line-height: 1.75;
+    }
+
+    /* ── Code block (shared) ── */
+    .cb {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--r); overflow: hidden;
+    }
+    .cb-top {
+      display: flex; align-items: center; gap: 6px;
+      padding: 10px 16px; border-bottom: 1px solid var(--border);
+    }
+    .cb-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .cb-dot.r { background: var(--red); }
+    .cb-dot.y { background: #e0b030; }
+    .cb-dot.g { background: var(--green); }
+    .cb-dot.gray { background: var(--text-4); }
+    .cb-tab {
+      font-family: var(--mono); font-size: 0.68rem; color: var(--text-3);
+      margin-left: 8px;
+    }
+    .cb-body { padding: 16px 20px; }
+
+    /* ── Terminal CTA ── */
+    .tcta { max-width: 440px; margin: 0 auto; text-align: left; }
+    .tcta .cb-body a {
+      display: block; font-family: var(--mono); font-size: 0.88rem;
+      font-weight: 600; padding: 12px 18px; border-radius: 6px;
+      background: var(--text); color: var(--bg);
+      text-align: center; text-decoration: none;
+    }
+    .tcta .cb-body a:hover { background: #333; text-decoration: none; }
+
+    .hero-meta {
+      display: flex; align-items: center; justify-content: center;
+      gap: 20px; margin-top: 22px;
+      font-family: var(--mono); font-size: 0.7rem; color: var(--text-3);
+    }
+    .stars { color: var(--orange); }
+
+    /* ── Section ── */
+    .sec { padding: 90px 0; }
+    .sec-label {
+      font-family: var(--mono); font-size: 0.72rem; font-weight: 600;
+      color: var(--orange); margin-bottom: 16px;
+      text-align: center; text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .sec-label::before { content: '● '; font-size: 0.55rem; vertical-align: middle; }
+    .sec h2 {
+      font-family: var(--mono); font-weight: 700;
+      font-size: clamp(1.6rem, 3.2vw, 2.2rem); line-height: 1.25;
+      letter-spacing: -0.02em; margin-bottom: 12px;
+      text-align: center;
+    }
+    .sec h2 em { font-style: normal; color: var(--orange); }
+    .sec-sub {
+      font-family: var(--mono); font-size: 0.88rem; color: var(--text-2);
+      text-align: center; max-width: 520px; margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── Feature tabs ── */
+    .ftabs {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 8px; margin: 36px 0 22px;
+    }
+    .ftab {
+      font-family: var(--mono); font-size: 0.72rem; font-weight: 600;
+      padding: 8px 16px; border-radius: 100px; cursor: pointer;
+      background: transparent; border: 1px solid var(--border);
+      color: var(--text-2); transition: 0.15s;
+      text-transform: uppercase; letter-spacing: 0.02em;
+    }
+    .ftab:hover { border-color: var(--text-3); color: var(--text); }
+    .ftab.on { background: var(--text); border-color: var(--text); color: var(--bg); }
+    .fdesc {
+      font-family: var(--mono); font-size: 0.88rem; color: var(--text-2);
+      text-align: center; max-width: 500px; margin: 0 auto 24px;
+      line-height: 1.7;
+    }
+
+    /* ── Dashboard mockup ── */
+    .mockup { max-width: 780px; margin: 0 auto; }
+    .mockup .cb-body { padding: 0; }
+    .mock-badge {
+      font-family: var(--mono); font-size: 0.6rem; color: var(--text-3);
+      border: 1px solid var(--border); border-radius: 4px; padding: 2px 8px;
+      float: right; margin: 12px 16px 0 0; text-transform: uppercase; letter-spacing: 0.03em;
+    }
+    .mock-sidebar {
+      position: absolute; left: 0; top: 0; bottom: 0; width: 48px;
+      border-right: 1px solid var(--border); display: flex;
+      flex-direction: column; align-items: center; padding-top: 14px; gap: 10px;
+    }
+    .mock-sidebar .ico {
+      width: 28px; height: 28px; border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem; color: var(--text-3);
+    }
+    .mock-sidebar .ico.active { background: var(--orange); color: #fff; }
+    .mock-main {
+      margin-left: 48px; padding: 16px 20px;
+    }
+    .mock-head {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 16px;
+    }
+    .mock-title {
+      font-family: var(--mono); font-size: 0.82rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.03em;
+    }
+    .mock-date {
+      font-family: var(--mono); font-size: 0.68rem; color: var(--text-3);
+      border: 1px solid var(--border); border-radius: 4px; padding: 4px 10px;
+    }
+    .mock-inner { position: relative; }
+
+    /* Dashboard grid */
+    .dg {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+      background: var(--border); margin-bottom: 1px;
+    }
+    .dc {
+      background: var(--bg-card); padding: 12px 14px;
+    }
+    .dc-l { font-family: var(--mono); font-size: 0.62rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 3px; }
+    .dc-v { font-family: var(--mono); font-weight: 700; font-size: 1.05rem; display: flex; align-items: baseline; gap: 8px; }
+    .dc-c { font-size: 0.62rem; font-weight: 500; }
+    .dc-c.up { color: var(--green); }
+    .dc-c.dn { color: var(--red); }
+    .dc-v .hi { color: var(--orange); }
+
+    /* ── Funnel ── */
+    .frow {
+      display: flex; justify-content: space-between;
+      padding: 12px 18px;
+      font-family: var(--mono); font-size: 0.82rem;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .frow:last-child { border-bottom: none; }
+    .frow .l { color: var(--text-2); }
+    .frow .v { font-weight: 600; }
+    .frow.neg .v { color: var(--red); }
+    .frow.net {
+      background: var(--orange-dim); border-radius: 6px;
+      border-bottom: none; margin: 6px 4px 4px;
+    }
+    .frow.net .l, .frow.net .v { color: var(--orange); font-weight: 700; }
+
+    /* ── Steps ── */
+    .srow {
+      display: flex; gap: 14px; padding: 14px 18px;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .srow:last-child { border-bottom: none; }
+    .srow .n {
+      font-family: var(--mono); font-weight: 700; font-size: 0.78rem;
+      color: var(--orange); min-width: 24px; padding-top: 2px;
+    }
+    .srow h3 { font-family: var(--mono); font-size: 0.88rem; font-weight: 600; margin-bottom: 2px; }
+    .srow p { font-size: 0.82rem; color: var(--text-2); line-height: 1.6; }
+
+    /* ── Testimonials (3-column, card style) ── */
+    .tgrid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 18px; margin-top: 40px;
+    }
+    .tcard {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--r); overflow: hidden;
+      display: flex; flex-direction: column;
+    }
+    .tcard-top {
+      display: flex; gap: 5px; padding: 12px 18px;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .tcard-top .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--text-4); }
+    .tcard-body {
+      padding: 22px 20px; flex: 1;
+      font-family: var(--mono); font-size: 0.82rem; color: var(--text);
+      line-height: 1.75;
+    }
+    .tcard-body em { font-style: italic; font-weight: 600; }
+    .tcard-footer {
+      padding: 14px 20px; border-top: 1px solid var(--border-light);
+    }
+    .tcard-name { font-family: var(--mono); font-size: 0.82rem; font-weight: 700; color: var(--text); }
+    .tcard-role { font-family: var(--mono); font-size: 0.72rem; color: var(--text-3); margin-top: 2px; }
+
+    /* ── Pricing (JSON) ── */
+    .pgrid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px;
+    }
+    .pcard {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--r); overflow: hidden; position: relative;
+    }
+    .pcard.feat { border-color: var(--orange); }
+    .pbadge {
+      position: absolute; top: 9px; right: 12px;
+      font-family: var(--mono); font-size: 0.58rem; font-weight: 700;
+      background: var(--orange); color: #fff; padding: 2px 8px;
+      border-radius: 3px; text-transform: uppercase;
+    }
+    .pcard .cb-top { border-bottom: 1px solid var(--border-light); }
+    .pcard .cb-body { padding: 14px 18px; }
+    .json { font-family: var(--mono); font-size: 0.72rem; line-height: 1.85; }
+    .jb { color: var(--text-3); }
+    .jk { color: #2e6bd6; }
+    .js { color: var(--green); }
+    .jn { color: var(--orange); }
+    .ji { padding-left: 18px; }
+    .jii { padding-left: 34px; }
+    .pcta {
+      display: block; text-align: center; margin: 8px 18px 16px;
+      font-family: var(--mono); font-size: 0.72rem; font-weight: 600;
+      padding: 9px; border-radius: 6px; text-decoration: none;
+    }
+    .pcta.fill { background: var(--text); color: var(--bg); }
+    .pcta.fill:hover { background: #333; text-decoration: none; }
+    .pcta.line { border: 1px solid var(--border); color: var(--text-2); }
+    .pcta.line:hover { border-color: var(--orange); color: var(--orange); text-decoration: none; }
+
+    /* ── Compare ── */
+    .ctbl {
+      margin-top: 36px; background: var(--bg-card);
+      border: 1px solid var(--border); border-radius: var(--r); overflow: hidden;
+    }
+    .ctbl table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
+    .ctbl th, .ctbl td { padding: 11px 16px; text-align: left; border-bottom: 1px solid var(--border-light); }
+    .ctbl th {
+      font-family: var(--mono); font-weight: 600; font-size: 0.68rem;
+      color: var(--text-3); text-transform: uppercase; letter-spacing: 0.04em;
+      background: var(--bg);
+    }
+    .ctbl th:last-child { color: var(--orange); }
+    .ctbl td { color: var(--text-2); font-family: var(--mono); font-size: 0.75rem; }
+    .ctbl td:first-child { color: var(--text); font-weight: 500; }
+    .ctbl td:last-child { color: var(--orange); font-weight: 600; }
+    .ctbl tr:last-child td { border-bottom: none; }
+    .ck { color: var(--green); }
+    .cx { color: var(--red); }
+
+    /* ── Inline CTA ── */
+    .icta { text-align: center; margin-top: 24px; }
+    .icta a { font-family: var(--mono); font-size: 0.8rem; font-weight: 600; }
+    .icta .note { font-family: var(--mono); font-size: 0.66rem; color: var(--text-3); margin-top: 5px; }
+
+    /* ── FAQ ── */
+    .faq { margin-top: 36px; max-width: var(--max-w); margin-left: auto; margin-right: auto; }
+    .faq-i { border-bottom: 1px solid var(--border); }
+    .faq-q {
+      width: 100%; background: none; border: none; color: var(--text);
+      font-family: var(--mono); font-size: 0.88rem; font-weight: 600;
+      padding: 18px 0; cursor: pointer; text-align: left;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .faq-q::after {
+      content: '+'; font-family: var(--mono); font-size: 1.1rem;
+      color: var(--text-3); flex-shrink: 0; margin-left: 12px;
+    }
+    .faq-i.open .faq-q::after { content: '−'; color: var(--orange); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .faq-a-in {
+      padding: 0 0 18px; font-family: var(--mono); font-size: 0.82rem;
+      color: var(--text-2); line-height: 1.7;
+    }
+
+    /* ── Bottom CTA ── */
+    .bcta {
+      text-align: center; padding: 80px 0;
+      border-top: 1px solid var(--border);
+    }
+    .bcta h2 {
+      font-family: var(--mono); font-weight: 700;
+      font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.25;
+      letter-spacing: -0.02em; margin-bottom: 12px;
+    }
+    .bcta p { font-family: var(--mono); font-size: 0.88rem; color: var(--text-2); margin-bottom: 28px; }
+    .bcta .note { font-family: var(--mono); font-size: 0.66rem; color: var(--text-3); margin-top: 16px; }
+
+    /* ── Footer ── */
+    footer {
+      padding: 28px 0; border-top: 1px solid var(--border); text-align: center;
+    }
+    .ft-brand {
+      font-family: var(--mono); font-size: 0.78rem; color: var(--text-2);
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      margin-bottom: 12px;
+    }
+    .ft-brand .nav-mark { width: 20px; height: 20px; font-size: 0.6rem; }
+    .ft-links { font-family: var(--mono); font-size: 0.68rem; color: var(--text-3); }
+    .ft-links a { color: var(--text-3); }
+    .ft-links a:hover { color: var(--orange); text-decoration: none; }
+    .ft-copy { font-family: var(--mono); font-size: 0.64rem; color: var(--text-4); margin-top: 10px; }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .tgrid { grid-template-columns: 1fr; }
+      .pgrid { grid-template-columns: 1fr; }
+      .dg { grid-template-columns: 1fr 1fr; }
+      .ctbl { overflow-x: auto; }
+      .ctbl table { min-width: 460px; }
+      .hero { padding: 115px 0 50px; }
+      .ftabs { gap: 6px; }
+      .ftab { font-size: 0.65rem; padding: 6px 10px; }
+      .mock-sidebar { display: none; }
+      .mock-main { margin-left: 0; }
+    }
+    @media (max-width: 480px) {
+      .dg { grid-template-columns: 1fr; }
+      .hero-meta { flex-direction: column; gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K56KZRDH"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-brand"><span class="nav-mark">T</span> TrueProfit</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#compare">Compare</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://trueprof.it/link/KfUchICah9" class="nav-get">Get started</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="w">
+      <div class="hero-eyebrow">#1 net profit analytics for Shopify</div>
+      <h1>Stop guessing your Shopify profits</h1>
+      <p class="hero-sub">Dashboard, profit-tracking, product analytics, ad attribution, and everything else you need to see your true bottom line.</p>
+
+      <div class="cb tcta">
+        <div class="cb-top">
+          <span class="cb-dot r"></span><span class="cb-dot y"></span><span class="cb-dot g"></span>
+          <span class="cb-tab">get-started.sh</span>
+        </div>
+        <div class="cb-body">
+          <a href="https://trueprof.it/link/KfUchICah9">Start 14-day free trial →</a>
+        </div>
+      </div>
+
+      <div class="hero-meta">
+        <span><span class="stars">★★★★★</span> 4.9 in Shopify App Store</span>
+        <span>14-day free trial</span>
+        <span>5,000+ stores</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="sec" id="features">
+    <div class="w">
+      <div class="sec-label">FEATURES</div>
+      <h2>Everything you need<br/>— nothing you don't</h2>
+
+      <div class="ftabs">
+        <span class="ftab on" data-i="0">DASHBOARD</span>
+        <span class="ftab" data-i="1">P&L</span>
+        <span class="ftab" data-i="2">LIFETIME VALUE</span>
+        <span class="ftab" data-i="3">PRODUCTS</span>
+        <span class="ftab" data-i="4">AD TRACKING</span>
+        <span class="ftab" data-i="5">EXPENSES</span>
+      </div>
+
+      <p class="fdesc" id="fdesc">Track revenue, costs, and net profit in real-time. Customize your dashboard to your needs.</p>
+
+      <!-- Mockup -->
+      <div class="cb mockup">
+        <div class="cb-top">
+          <span class="cb-dot r"></span><span class="cb-dot y"></span><span class="cb-dot g"></span>
+          <span style="flex:1;"></span>
+          <span style="font-family:var(--mono);font-size:0.58rem;color:var(--text-4);border:1px solid var(--border);border-radius:3px;padding:2px 7px;text-transform:uppercase;letter-spacing:0.03em;">Illustration — Not real app</span>
+        </div>
+        <div class="cb-body" style="padding:0;">
+          <div class="mock-inner">
+            <!-- Sidebar -->
+            <div class="mock-sidebar">
+              <div class="ico" style="background:var(--orange);color:#fff;font-weight:700;">T</div>
+              <div class="ico">◐</div>
+              <div class="ico">◑</div>
+              <div class="ico active">◕</div>
+              <div class="ico">◔</div>
+              <div class="ico">◓</div>
+              <div class="ico">◒</div>
+            </div>
+            <!-- Main -->
+            <div class="mock-main">
+              <div class="mock-head">
+                <div class="mock-title">Real-Time Dashboard</div>
+                <div class="mock-date">Jun 1 — Jun 30, 2025</div>
+              </div>
+              <div class="dg">
+                <div class="dc"><div class="dc-l">Sales</div><div class="dc-v">$53,321 <span class="dc-c up">+2.7%</span></div></div>
+                <div class="dc"><div class="dc-l">Revenue</div><div class="dc-v">$48,291 <span class="dc-c up">+12.4%</span></div></div>
+                <div class="dc"><div class="dc-l">CM1</div><div class="dc-v">$31,390 <span class="dc-c up">+9.8%</span></div></div>
+                <div class="dc"><div class="dc-l">Ad Spend</div><div class="dc-v">$9,658 <span class="dc-c dn">+5.2%</span></div></div>
+                <div class="dc"><div class="dc-l">Net Profit</div><div class="dc-v"><span class="hi">$17,869</span> <span class="dc-c up">+15.1%</span></div></div>
+                <div class="dc"><div class="dc-l">Blended CAC</div><div class="dc-v">$32.50 <span class="dc-c up">-8.4%</span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Truth -->
+  <section class="sec">
+    <div class="w">
+      <div class="sec-label">THE TRUTH</div>
+      <h2>Net profit is the only metric<br/>that <em>actually</em> matters</h2>
+      <p class="sec-sub">Revenue looks great — until you subtract everything.</p>
+
+      <div class="cb" style="margin-top:32px;">
+        <div class="cb-top">
+          <span class="cb-dot r"></span><span class="cb-dot y"></span><span class="cb-dot g"></span>
+          <span class="cb-tab">profit-waterfall.json</span>
+        </div>
+        <div class="cb-body" style="padding:8px 0;">
+          <div class="frow"><span class="l">Gross Revenue</span><span class="v">$50,000</span></div>
+          <div class="frow neg"><span class="l">– Cost of Goods</span><span class="v">−$15,000</span></div>
+          <div class="frow neg"><span class="l">– Shipping & Fees</span><span class="v">−$6,200</span></div>
+          <div class="frow neg"><span class="l">– Ad Spend</span><span class="v">−$12,300</span></div>
+          <div class="frow net"><span class="l">= Net Profit</span><span class="v">$16,500</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="sec" id="pricing">
+    <div class="w">
+      <div class="sec-label">PRICING</div>
+      <h2>Four plans. Pick yours.</h2>
+      <p class="sec-sub">14-day free trial on every plan. No credit card required.</p>
+
+      <div class="pgrid">
+        <div class="pcard">
+          <div class="cb-top"><span class="cb-dot gray"></span><span class="cb-dot gray"></span><span class="cb-dot gray"></span><span class="cb-tab">basic-plan.json</span></div>
+          <div class="cb-body"><div class="json">
+            <div><span class="jb">{</span></div>
+            <div class="ji"><span class="jk">"plan"</span>: <span class="js">"Basic"</span>,</div>
+            <div class="ji"><span class="jk">"price"</span>: <span class="jn">35</span>,</div>
+            <div class="ji"><span class="jk">"currency"</span>: <span class="js">"USD/month"</span>,</div>
+            <div class="ji"><span class="jk">"orders"</span>: <span class="jn">300</span>,</div>
+            <div class="ji"><span class="jk">"features"</span>: [</div>
+            <div class="jii"><span class="js">"14-day free trial"</span>,</div>
+            <div class="jii"><span class="js">"Realtime profit dashboard"</span>,</div>
+            <div class="jii"><span class="js">"Customer Lifetime Value"</span>,</div>
+            <div class="jii"><span class="js">"Quantity-based COGS"</span>,</div>
+            <div class="jii"><span class="js">"Custom Costs"</span></div>
+            <div class="ji">]</div>
+            <div><span class="jb">}</span></div>
+          </div></div>
+          <a href="https://trueprof.it/link/KfUchICah9" class="pcta line">Start 14 Days Free</a>
+        </div>
+
+        <div class="pcard">
+          <div class="cb-top"><span class="cb-dot gray"></span><span class="cb-dot gray"></span><span class="cb-dot gray"></span><span class="cb-tab">advanced-plan.json</span></div>
+          <div class="cb-body"><div class="json">
+            <div><span class="jb">{</span></div>
+            <div class="ji"><span class="jk">"plan"</span>: <span class="js">"Advanced"</span>,</div>
+            <div class="ji"><span class="jk">"price"</span>: <span class="jn">60</span>,</div>
+            <div class="ji"><span class="jk">"currency"</span>: <span class="js">"USD/month"</span>,</div>
+            <div class="ji"><span class="jk">"orders"</span>: <span class="jn">600</span>,</div>
+            <div class="ji"><span class="jk">"features"</span>: [</div>
+            <div class="jii"><span class="js">"Everything in Basic"</span>,</div>
+            <div class="jii"><span class="js">"Product Analytics"</span>,</div>
+            <div class="jii"><span class="js">"P&amp;L Report"</span>,</div>
+            <div class="jii"><span class="js">"Ad Sync Custom Rules"</span></div>
+            <div class="ji">]</div>
+            <div><span class="jb">}</span></div>
+          </div></div>
+          <a href="https://trueprof.it/link/KfUchICah9" class="pcta line">Start 14 Days Free</a>
+        </div>
+
+        <div class="pcard feat">
+          <div class="pbadge">Recommended</div>
+          <div class="cb-top"><span class="cb-dot r"></span><span class="cb-dot y"></span><span class="cb-dot g"></span><span class="cb-tab">ultimate-plan.json</span></div>
+          <div class="cb-body"><div class="json">
+            <div><span class="jb">{</span></div>
+            <div class="ji"><span class="jk">"plan"</span>: <span class="js">"Ultimate"</span>,</div>
+            <div class="ji"><span class="jk">"price"</span>: <span class="jn">100</span>,</div>
+            <div class="ji"><span class="jk">"currency"</span>: <span class="js">"USD/month"</span>,</div>
+            <div class="ji"><span class="jk">"orders"</span>: <span class="jn">1500</span>,</div>
+            <div class="ji"><span class="jk">"features"</span>: [</div>
+            <div class="jii"><span class="js">"Everything in Advanced"</span>,</div>
+            <div class="jii"><span class="js">"Ad Sync Custom Rules"</span>,</div>
+            <div class="jii"><span class="js">"Unlimited COGS Zones"</span>,</div>
+            <div class="jii"><span class="js">"Marketing Attribution"</span></div>
+            <div class="ji">]</div>
+            <div><span class="jb">}</span></div>
+          </div></div>
+          <a href="https://trueprof.it/link/KfUchICah9" class="pcta fill">Start 14 Days Free</a>
+        </div>
+
+        <div class="pcard">
+          <div class="cb-top"><span class="cb-dot gray"></span><span class="cb-dot gray"></span><span class="cb-dot gray"></span><span class="cb-tab">enterprise-plan.json</span></div>
+          <div class="cb-body"><div class="json">
+            <div><span class="jb">{</span></div>
+            <div class="ji"><span class="jk">"plan"</span>: <span class="js">"Enterprise"</span>,</div>
+            <div class="ji"><span class="jk">"price"</span>: <span class="jn">200</span>,</div>
+            <div class="ji"><span class="jk">"currency"</span>: <span class="js">"USD/month"</span>,</div>
+            <div class="ji"><span class="jk">"orders"</span>: <span class="jn">3500</span>,</div>
+            <div class="ji"><span class="jk">"features"</span>: [</div>
+            <div class="jii"><span class="js">"Everything in Ultimate"</span>,</div>
+            <div class="jii"><span class="js">"Unlimited Team Members"</span>,</div>
+            <div class="jii"><span class="js">"Prioritized Support"</span></div>
+            <div class="ji">]</div>
+            <div><span class="jb">}</span></div>
+          </div></div>
+          <a href="https://trueprof.it/link/KfUchICah9" class="pcta line">Start 14 Days Free</a>
+        </div>
+      </div>
+
+      <div class="icta">
+        <a href="https://trueprof.it/link/KfUchICah9">Start 14-day free trial →</a>
+        <div class="note">14-day free trial | Cancel anytime</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="sec" id="testimonials">
+    <div class="w-wide">
+      <div class="sec-label">TESTIMONIALS</div>
+      <h2>Trusted by <em>profit-focused</em> brands</h2>
+      <p class="sec-sub">Profitable brands use TrueProfit to kill vanity metrics and focus on money-in-the-bank.</p>
+
+      <div class="tgrid">
+        <div class="tcard">
+          <div class="tcard-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <div class="tcard-body">"I thought I was profitable until TrueProfit showed me my real numbers. <em>Turned out 3 of my 'best sellers' were actually losing money on ads.</em>"</div>
+          <div class="tcard-footer">
+            <div class="tcard-name">Jake M.</div>
+            <div class="tcard-role">— Dropshipping Store, $50K/mo</div>
+          </div>
+        </div>
+        <div class="tcard">
+          <div class="tcard-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <div class="tcard-body">"Finally ditched my spreadsheets. <em>The real-time dashboard saves me hours every week</em> and the product analytics are a game changer."</div>
+          <div class="tcard-footer">
+            <div class="tcard-name">Sarah L.</div>
+            <div class="tcard-role">— DTC Brand, $120K/mo</div>
+          </div>
+        </div>
+        <div class="tcard">
+          <div class="tcard-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <div class="tcard-body">"The ad tracking alone is worth it. <em>I can see true ROAS by channel and killed campaigns that were eating my margins.</em>"</div>
+          <div class="tcard-footer">
+            <div class="tcard-name">Ryan K.</div>
+            <div class="tcard-role">— Print on Demand, $30K/mo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Compare -->
+  <section class="sec" id="compare">
+    <div class="w">
+      <div class="sec-label">COMPARE</div>
+      <h2>See how TrueProfit stacks up</h2>
+      <p class="sec-sub">Same insights. Built for merchants who care about the bottom line.</p>
+
+      <div class="ctbl">
+        <table>
+          <thead><tr><th>Feature</th><th>Triple Whale</th><th>Lifetimely</th><th>TrueProfit</th></tr></thead>
+          <tbody>
+            <tr><td>Starting price</td><td>$219/mo</td><td>$149/mo</td><td>$35/mo</td></tr>
+            <tr><td>Profit dashboard</td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td></tr>
+            <tr><td>P&L breakdown</td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td></tr>
+            <tr><td>Product analytics</td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td></tr>
+            <tr><td>Customer LTV</td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td></tr>
+            <tr><td>Ad integrations</td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td></tr>
+            <tr><td>Marketing attribution</td><td><span class="ck">✓</span></td><td><span class="cx">✕</span></td><td><span class="ck">✓</span></td></tr>
+            <tr><td>14-day free trial</td><td><span class="cx">✕</span></td><td><span class="ck">✓</span></td><td><span class="ck">✓</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="icta">
+        <a href="https://trueprof.it/link/KfUchICah9">Start saving money now →</a>
+        <div class="note">14-day free trial | Cancel anytime</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Get Started -->
+  <section class="sec" id="setup">
+    <div class="w">
+      <div class="sec-label">GET STARTED</div>
+      <h2>Start tracking profits<br/>in under 2 minutes</h2>
+      <p class="sec-sub">No developer needed. TrueProfit installs like any Shopify app.</p>
+
+      <div class="cb" style="margin-top:32px;">
+        <div class="cb-top">
+          <span class="cb-dot r"></span><span class="cb-dot y"></span><span class="cb-dot g"></span>
+          <span class="cb-tab">setup-guide.sh</span>
+        </div>
+        <div class="cb-body" style="padding:8px 0;">
+          <div class="srow"><span class="n">01</span><div><h3>Install the app</h3><p>One click from the Shopify App Store. 30 seconds.</p></div></div>
+          <div class="srow"><span class="n">02</span><div><h3>Connect ad channels</h3><p>Meta, Google, TikTok, Snapchat, Pinterest.</p></div></div>
+          <div class="srow"><span class="n">03</span><div><h3>Define costs</h3><p>COGS, shipping, transaction fees, custom expenses.</p></div></div>
+        </div>
+      </div>
+
+      <div class="icta">
+        <a href="https://trueprof.it/link/KfUchICah9">Start 14-day free trial →</a>
+        <div class="note">14-day free trial | Cancel anytime</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec" id="faq">
+    <div class="w">
+      <div class="sec-label">FAQ</div>
+      <h2>Questions? Answers.</h2>
+
+      <div class="faq">
+        <div class="faq-i"><button class="faq-q">What ad integrations do you offer?</button><div class="faq-a"><div class="faq-a-in">Facebook/Meta, Google, TikTok, Snapchat, and Pinterest. Spend data is pulled automatically so you see true ROAS based on net profit.</div></div></div>
+        <div class="faq-i"><button class="faq-q">How do you get COGS?</button><div class="faq-a"><div class="faq-a-in">We pull COGS directly from Shopify. You can also set custom COGS per product, per variant, and per time period. Quantity-based COGS is supported on all plans.</div></div></div>
+        <div class="faq-i"><button class="faq-q">How accurate is the data vs Shopify?</button><div class="faq-a"><div class="faq-a-in">Extremely accurate. We sync directly with Shopify's API and your connected ad platforms. Your numbers match Shopify admin, plus all the cost layers Shopify doesn't show you.</div></div></div>
+        <div class="faq-i"><button class="faq-q">How can I input shipping costs?</button><div class="faq-a"><div class="faq-a-in">Set average shipping costs per order, define cost matrices by weight and destination, or connect with your fulfillment provider for automatic syncing.</div></div></div>
+        <div class="faq-i"><button class="faq-q">Do I need a developer to set this up?</button><div class="faq-a"><div class="faq-a-in">No. TrueProfit installs like any Shopify app — one click. Data starts syncing immediately. Most merchants are fully set up in under 5 minutes.</div></div></div>
+        <div class="faq-i"><button class="faq-q">What if I need help?</button><div class="faq-a"><div class="faq-a-in">Live chat and email support from a team of actual ecommerce operators who understand your business.</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="bcta">
+    <div class="w">
+      <h2>Stop guessing. Start profiting.</h2>
+      <p>Join 5,000+ Shopify merchants tracking their true net profit.</p>
+
+      <div class="cb tcta" style="margin:0 auto;">
+        <div class="cb-top">
+          <span class="cb-dot r"></span><span class="cb-dot y"></span><span class="cb-dot g"></span>
+          <span class="cb-tab">start-profiting.sh</span>
+        </div>
+        <div class="cb-body">
+          <a href="https://trueprof.it/link/KfUchICah9">Start 14-day free trial →</a>
+        </div>
+      </div>
+
+      <div class="note">No credit card required · 30-second install · Cancel anytime</div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="w">
+      <div class="ft-brand"><span class="nav-mark">T</span> Real-time net profit analytics for Shopify.</div>
+      <div class="ft-links">
+        <a href="#features">Features</a> ·
+        <a href="#pricing">Pricing</a> ·
+        <a href="#compare">Compare</a> ·
+        <a href="#faq">FAQ</a> ·
+        <a href="https://trueprof.it/link/KfUchICah9">Start Free Trial</a> ·
+        <a href="https://trueprof.it/link/KfUchICah9">Privacy Policy</a>
+      </div>
+      <div class="ft-copy">TrueProfit © 2026</div>
+    </div>
+  </footer>
+
+  <script>
+    // Feature tabs
+    const dd = [
+      "Track revenue, costs, and net profit in real-time. Customize your dashboard to your needs.",
+      "Auto-generated profit & loss statements for any time period. Export for your accountant in one click.",
+      "See how much each customer is really worth over time. Make smarter acquisition decisions.",
+      "Know exactly which products make money and which drain it. Sort by margin, volume, or ROI.",
+      "Connect Meta, Google, and TikTok ads. See true ROAS based on net profit — not just revenue.",
+      "Log every cost — COGS, shipping, transaction fees, custom expenses — and see their impact instantly."
+    ];
+    document.querySelectorAll('.ftab').forEach(t => {
+      t.addEventListener('click', () => {
+        document.querySelectorAll('.ftab').forEach(x => x.classList.remove('on'));
+        t.classList.add('on');
+        document.getElementById('fdesc').textContent = dd[t.dataset.i];
+      });
+    });
+
+    // FAQ
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const i = q.parentElement, a = i.querySelector('.faq-a'), o = i.classList.contains('open');
+        document.querySelectorAll('.faq-i').forEach(x => { x.classList.remove('open'); x.querySelector('.faq-a').style.maxHeight = '0'; });
+        if (!o) { i.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px'; }
+      });
+    });
+  </script>
+
+</body>
+</html>
