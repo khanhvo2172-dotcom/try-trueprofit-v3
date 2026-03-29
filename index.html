@@ -471,51 +471,24 @@
 
       <div class="ftabs">
         <span class="ftab on" data-i="0">DASHBOARD</span>
-        <span class="ftab" data-i="1">P&L</span>
-        <span class="ftab" data-i="2">LIFETIME VALUE</span>
-        <span class="ftab" data-i="3">PRODUCTS</span>
-        <span class="ftab" data-i="4">AD TRACKING</span>
-        <span class="ftab" data-i="5">EXPENSES</span>
+        <span class="ftab" data-i="1">P&L REPORT</span>
+        <span class="ftab" data-i="2">PRODUCT ANALYTICS</span>
+        <span class="ftab" data-i="3">COSTS & EXPENSES</span>
+        <span class="ftab" data-i="4">ADVERTISING ATTRIBUTION</span>
+        <span class="ftab" data-i="5">LIFETIME VALUE</span>
+        <span class="ftab" data-i="6">MCP SERVER</span>
       </div>
 
       <p class="fdesc" id="fdesc">Track revenue, costs, and net profit in real-time. Customize your dashboard to your needs.</p>
 
-      <!-- Mockup -->
-      <div class="cb mockup">
+      <!-- Feature Image -->
+      <div class="cb" style="overflow:hidden;">
         <div class="cb-top">
           <span class="cb-dot r"></span><span class="cb-dot y"></span><span class="cb-dot g"></span>
           <span style="flex:1;"></span>
-          <span style="font-family:var(--mono);font-size:0.58rem;color:var(--text-4);border:1px solid var(--border);border-radius:3px;padding:2px 7px;text-transform:uppercase;letter-spacing:0.03em;">Illustration — Not real app</span>
+          <span style="font-family:var(--mono);font-size:0.58rem;color:var(--text-4);border:1px solid var(--border);border-radius:3px;padding:2px 7px;text-transform:uppercase;letter-spacing:0.03em;">Illustration</span>
         </div>
-        <div class="cb-body" style="padding:0;">
-          <div class="mock-inner">
-            <!-- Sidebar -->
-            <div class="mock-sidebar">
-              <div class="ico" style="background:var(--orange);color:#fff;font-weight:700;">T</div>
-              <div class="ico">◐</div>
-              <div class="ico">◑</div>
-              <div class="ico active">◕</div>
-              <div class="ico">◔</div>
-              <div class="ico">◓</div>
-              <div class="ico">◒</div>
-            </div>
-            <!-- Main -->
-            <div class="mock-main">
-              <div class="mock-head">
-                <div class="mock-title">Real-Time Dashboard</div>
-                <div class="mock-date">Jun 1 — Jun 30, 2025</div>
-              </div>
-              <div class="dg">
-                <div class="dc"><div class="dc-l">Sales</div><div class="dc-v">$53,321 <span class="dc-c up">+2.7%</span></div></div>
-                <div class="dc"><div class="dc-l">Revenue</div><div class="dc-v">$48,291 <span class="dc-c up">+12.4%</span></div></div>
-                <div class="dc"><div class="dc-l">CM1</div><div class="dc-v">$31,390 <span class="dc-c up">+9.8%</span></div></div>
-                <div class="dc"><div class="dc-l">Ad Spend</div><div class="dc-v">$9,658 <span class="dc-c dn">+5.2%</span></div></div>
-                <div class="dc"><div class="dc-l">Net Profit</div><div class="dc-v"><span class="hi">$17,869</span> <span class="dc-c up">+15.1%</span></div></div>
-                <div class="dc"><div class="dc-l">Blended CAC</div><div class="dc-v">$32.50 <span class="dc-c up">-8.4%</span></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <img id="feature-img" src="./images/trueprofit-general-dashboard-2.png" alt="Dashboard" style="width:100%;display:block;" />
       </div>
     </div>
   </section>
@@ -786,16 +759,27 @@
     const dd = [
       "Track revenue, costs, and net profit in real-time. Customize your dashboard to your needs.",
       "Auto-generated profit & loss statements for any time period. Export for your accountant in one click.",
-      "See how much each customer is really worth over time. Make smarter acquisition decisions.",
       "Know exactly which products make money and which drain it. Sort by margin, volume, or ROI.",
+      "Log every cost — COGS, shipping, transaction fees, custom expenses — and see their impact instantly.",
       "Connect Meta, Google, and TikTok ads. See true ROAS based on net profit — not just revenue.",
-      "Log every cost — COGS, shipping, transaction fees, custom expenses — and see their impact instantly."
+      "See how much each customer is really worth over time. Make smarter acquisition decisions.",
+      "Connect ChatGPT, Claude, Gemini or any AI assistant directly to your store's data and make them your employee."
+    ];
+    const imgs = [
+      "./images/trueprofit-general-dashboard-2.png",
+      "./images/TrueProfit-Automated-PnL-Report.png",
+      "./images/product-analytics.png",
+      "./images/TrueProfit-COGS-dashboard.png",
+      "./images/advertising-tracking-dashboard-2.png",
+      "./images/ltv-tracking-dashboard-2.png",
+      "./images/trueprofit-general-dashboard-1.png"
     ];
     document.querySelectorAll('.ftab').forEach(t => {
       t.addEventListener('click', () => {
         document.querySelectorAll('.ftab').forEach(x => x.classList.remove('on'));
         t.classList.add('on');
         document.getElementById('fdesc').textContent = dd[t.dataset.i];
+        document.getElementById('feature-img').src = imgs[t.dataset.i];
       });
     });
 
