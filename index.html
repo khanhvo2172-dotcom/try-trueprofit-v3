@@ -54,7 +54,7 @@
     a { color: var(--orange); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    .w { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+    .w { max-width: var(--max-w); margin: 0 auto; padding: 0 0px; }
     .w-wide { max-width: var(--max-w-wide); margin: 0 auto; padding: 0 24px; }
 
     /* ── Nav ── */
@@ -137,6 +137,26 @@
       text-align: center; text-decoration: none;
     }
     .tcta .cb-body a:hover { background: #333; text-decoration: none; }
+    .tcta-meta {
+      display: flex; align-items: center; justify-content: center;
+      gap: 16px; margin-top: 12px;
+      font-family: var(--mono); font-size: 0.68rem; color: var(--text-3);
+    }
+    .tcta-meta .stars { color: var(--orange); }
+    .appstore-link {
+      color: var(--text) !important; font-weight: 700 !important;
+      text-decoration: underline !important; background: none !important;
+      padding: 0 !important; border-radius: 0 !important;
+      display: inline !important; font-size: inherit !important;
+    }
+
+    .hero-stats {
+      display: flex; align-items: center; justify-content: center;
+      gap: 10px; margin-top: 24px;
+      font-family: var(--mono); font-size: 0.75rem; color: var(--text-3);
+    }
+    .hero-stat-num { font-weight: 700; color: var(--text); }
+    .hero-stat-dot { color: var(--orange); font-size: 0.5rem; vertical-align: middle; }
 
     .hero-meta {
       display: flex; align-items: center; justify-content: center;
@@ -445,7 +465,8 @@
     }
     @media (max-width: 480px) {
       .dg { grid-template-columns: 1fr; }
-      .hero-meta { flex-direction: column; gap: 6px; }
+      .hero-stats { flex-direction: column; gap: 6px; }
+      .hero-stat-dot { display: none; }
     }
   </style>
 </head>
@@ -471,7 +492,7 @@
   <section class="hero">
     <div class="w">
       <div class="hero-eyebrow">#1 net profit analytics for Shopify</div>
-      <h1>Stop guessing your<br/><span style="color:#23c48c;">Shopify profits</span></h1>
+      <h1>Stop guessing your Shopify profits</h1>
       <p class="hero-sub">Dashboard, profit-tracking, product analytics, ad attribution, and everything else you need to see your true bottom line.</p>
 
       <div class="cb tcta">
@@ -481,18 +502,24 @@
         </div>
         <div class="cb-body">
           <a href="https://trueprof.it/link/KfUchICah9">Start 14-day free trial →</a>
+          <div class="tcta-meta">
+            <span><span class="stars">★★★★★</span> 4.9 in <a href="https://trueprof.it/link/KfUchICah9" class="appstore-link">Shopify App Store</a></span>
+          </div>
+          <div class="tcta-meta">
+            <span>14-day free trial</span>
+          </div>
         </div>
       </div>
 
-      <div class="hero-meta">
-        <span><span class="stars">★★★★★</span> 4.9 in Shopify App Store</span>
-        <span>14-day free trial</span>
-        <span>5,000+ stores</span>
+      <div class="hero-stats">
+        <div class="hero-stat"><span class="hero-stat-dot">●</span> <span class="hero-stat-num">70,000+</span> stores</div>
+        <div class="hero-stat"><span class="hero-stat-dot">●</span> <span class="hero-stat-num">$98B</span> Total Revenue Tracked</div>
+        <div class="hero-stat"><span class="hero-stat-dot">●</span> <span class="hero-stat-num">$2.6B</span> Total Ad Spend Tracked</div>
       </div>
     </div>
   </section>
 
-    <!-- Truth -->
+  <!-- Truth -->
   <section class="sec">
     <div class="w">
       <div class="sec-label">THE TRUTH</div>
@@ -513,6 +540,21 @@
             <div class="frow net"><span class="l">= Net Profit</span><span class="v">$16,500</span></div>
           </div>
         </div>
+
+        <!-- Callout annotation -->
+        <div class="callout">
+          <svg class="callout-arrow" width="120" height="80" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 4 C12 28, 35 52, 80 62" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" fill="none" />
+            <path d="M72 56 L80 62 L72 66" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+          </svg>
+          <div class="callout-text">
+            <span>This is what matters.</span>
+            <span class="callout-sub">Shopify reports & spreadsheets<br/>can't track this accurately.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Features -->
   <section class="sec" id="features">
@@ -540,21 +582,6 @@
           <span style="font-family:var(--mono);font-size:0.58rem;color:var(--text-4);border:1px solid var(--border);border-radius:3px;padding:2px 7px;text-transform:uppercase;letter-spacing:0.03em;">Illustration</span>
         </div>
         <img id="feature-img" src="./images/trueprofit-general-dashboard-2.jpg" alt="Dashboard" style="width:100%;display:block;" />
-      </div>
-    </div>
-  </section>
-
-        <!-- Callout annotation -->
-        <div class="callout">
-          <svg class="callout-arrow" width="120" height="80" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M8 4 C12 28, 35 52, 80 62" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" fill="none" />
-            <path d="M72 56 L80 62 L72 66" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
-          </svg>
-          <div class="callout-text">
-            <span>This is what matters.</span>
-            <span class="callout-sub">Shopify reports & spreadsheets<br/>can't track this accurately.</span>
-          </div>
-        </div>
       </div>
     </div>
   </section>
