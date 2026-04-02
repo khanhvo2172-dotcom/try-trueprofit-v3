@@ -484,6 +484,38 @@
       border: 1px solid rgba(35,196,140,0.25); border-radius: 100px;
       background: rgba(35,196,140,0.06);
     }
+    /* ── Iceberg ── */
+    .ice-wrap{max-width:740px;margin:0 auto}
+    .ice-head{text-align:center;margin-bottom:32px}
+    .ice-layout{display:flex;gap:0;align-items:stretch}
+    .ice-ann{width:190px;flex-shrink:0;position:relative}
+    .ice-main{flex:1;min-width:0}
+    .ice-wl{position:relative;height:3px;background:linear-gradient(90deg,transparent,#3b8bd4 10%,#3b8bd4 90%,transparent);opacity:0.5;margin:0 4px}
+    .ice-wl-label{position:absolute;right:8px;top:-18px;font-family:var(--mono);font-size:10px;color:#3b8bd4;letter-spacing:0.04em;text-transform:uppercase;font-weight:600}
+    .ice-top{padding:20px 20px 24px}
+    .ice-bot{padding:16px 20px 28px}
+    .ice-row{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;margin:5px auto;border-radius:8px;font-family:var(--mono);font-size:13px;transition:transform 0.2s}
+    .ice-row:hover{transform:scale(1.02)}
+    .ice-row .il{color:var(--text-2);font-weight:500}
+    .ice-row .iv{font-weight:700}
+    .ir{background:rgba(35,196,140,0.06);border:1px solid rgba(35,196,140,0.15);max-width:100%}
+    .ir .iv{color:var(--orange)}
+    .ic{background:rgba(224,80,80,0.05);border:1px solid rgba(224,80,80,0.1)}
+    .ic .iv{color:var(--red)}
+    .ic1{max-width:92%}.ic2{max-width:84%}.ic3{max-width:76%}.ic4{max-width:68%}.ic5{max-width:60%}
+    .ice-div{display:flex;align-items:center;gap:10px;margin:14px auto;max-width:88%}
+    .ice-div-line{flex:1;height:1px;background:var(--border)}
+    .ice-div-text{font-family:var(--mono);font-size:10px;color:var(--text-3);text-transform:uppercase;letter-spacing:0.06em;white-space:nowrap}
+    .ip{background:rgba(35,196,140,0.1);border:2px solid var(--orange);max-width:48%;margin-top:4px}
+    .ip .il,.ip .iv{color:var(--orange);font-weight:700}
+    .ice-lbl{font-family:var(--mono);font-size:11px;color:var(--text-3);margin-bottom:6px;letter-spacing:0.03em;text-align:center}
+    .ann{position:absolute;left:0;display:flex;align-items:center;gap:0}
+    .ann-t{font-family:var(--mono);font-size:11px;line-height:1.45;text-align:right;padding-right:8px}
+    .ann-rev{top:42px}.ann-rev .ann-t{color:var(--orange);font-weight:600}
+    .ann-cost{top:198px}.ann-cost .ann-t{color:var(--red);font-weight:600}
+    .ann-prof{top:405px}.ann-prof .ann-t{color:var(--orange);font-weight:700}
+    .ice-badges{display:flex;justify-content:center;gap:6px;margin-top:20px;flex-wrap:wrap}
+    .ice-badge{font-family:var(--mono);font-size:10px;font-weight:600;color:var(--orange);padding:4px 10px;border:1px solid rgba(35,196,140,0.25);border-radius:100px;background:rgba(35,196,140,0.06)} 
     
     /* ── Callout annotation ── */
     .callout {
@@ -517,6 +549,7 @@
       .vs-arrow { padding: 12px 0; }
       .vs-arrow svg { transform: rotate(90deg); }
       .tgrid { grid-template-columns: 1fr; }
+      .ice-ann{display:none}
       .pgrid { grid-template-columns: 1fr; }
       .dg { grid-template-columns: 1fr 1fr; }
       .ctbl { overflow-x: auto; }
@@ -590,7 +623,7 @@
   <section class="sec">
     <div class="w">
       <div class="sec-label">WHY TRUEPROFIT</div>
-      <h2>Still using spreadsheets to<br/>track <em>profit</em>?</h2>
+      <h2>Struggle to track your <em>Profit & Expenses</em>em> using Spreadsheets & Shopify-Built in Report?</em>?</h2>
 
       <div class="vs-grid">
         <!-- Before -->
@@ -655,6 +688,56 @@
       </div>
     </div>
   </section>
+  
+ <!-- Iceberg -->
+  <section class="sec">
+    <div class="ice-wrap">
+      <div class="ice-head">
+        <div class="sec-label">THE TRUTH</div>
+        <h2 style="text-align:center">Most tools only see the <em>tip</em><br/>of the iceberg</h2>
+        <p class="sec-sub" style="margin:0 auto">Revenue is just the surface. True profitability lives beneath it.</p>
+      </div>
+      <div class="ice-layout">
+        <div class="ice-ann">
+          <div class="ann ann-rev">
+            <div class="ann-t">All that Shopify<br/>reports show you</div>
+            <svg width="32" height="20" viewBox="0 0 32 20" fill="none"><path d="M4 10H24" stroke="#23c48c" stroke-width="1.5" stroke-linecap="round"/><path d="M20 5l6 5-6 5" stroke="#23c48c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+          </div>
+          <div class="ann ann-cost">
+            <div class="ann-t" style="color:#e05050">What other tools<br/>miss or miscalculate</div>
+            <svg width="32" height="20" viewBox="0 0 32 20" fill="none"><path d="M4 10H24" stroke="#e05050" stroke-width="1.5" stroke-linecap="round"/><path d="M20 5l6 5-6 5" stroke="#e05050" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+          </div>
+          <div class="ann ann-prof">
+            <div class="ann-t">What <strong>TrueProfit</strong><br/>reveals for you</div>
+            <svg width="32" height="20" viewBox="0 0 32 20" fill="none"><path d="M4 10H24" stroke="#23c48c" stroke-width="2" stroke-linecap="round"/><path d="M20 5l6 5-6 5" stroke="#23c48c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+          </div>
+        </div>
+        <div class="ice-main">
+          <div class="ice-top">
+            <div class="ice-lbl">Above the surface</div>
+            <div class="ice-row ir"><span class="il">Revenue</span><span class="iv">$50,000</span></div>
+          </div>
+          <div class="ice-wl"><span class="ice-wl-label">surface ~~~</span></div>
+          <div class="ice-bot">
+            <div class="ice-lbl">Hidden beneath</div>
+            <div class="ice-row ic ic1"><span class="il">– COGS</span><span class="iv">−$15,000</span></div>
+            <div class="ice-row ic ic2"><span class="il">– Shipping costs</span><span class="iv">−$3,800</span></div>
+            <div class="ice-row ic ic3"><span class="il">– Transaction fees</span><span class="iv">−$2,400</span></div>
+            <div class="ice-row ic ic4"><span class="il">– Ad spend</span><span class="iv">−$9,500</span></div>
+            <div class="ice-row ic ic5"><span class="il">– Refunds & returns</span><span class="iv">−$2,800</span></div>
+            <div class="ice-div"><span class="ice-div-line"></span><span class="ice-div-text">What you actually keep</span><span class="ice-div-line"></span></div>
+            <div class="ice-row ip"><span class="il">= Net profit</span><span class="iv">$16,500</span></div>
+            <div class="ice-badges">
+              <span class="ice-badge">Every cost layer tracked</span>
+              <span class="ice-badge">Automatically</span>
+              <span class="ice-badge">In real time</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
   <!-- Truth -->
   <section class="sec">
     <div class="w">
