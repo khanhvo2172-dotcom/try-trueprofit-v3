@@ -1338,10 +1338,7 @@
       .hero h1 span { white-space: nowrap; }
       .hero-sub { font-size: 0.78rem; max-width: 480px; }
       .hero-cta-card { max-width: 100%; padding: 0 4px; gap: 10px; }
-      /* Compact buttons */
-      .tcta-btn-primary { padding: 10px 14px; font-size: 0.78rem; }
-      .tcta-btn-secondary { padding: 10px 12px; font-size: 0.74rem; }
-      /* Trust line: always centered and wrapped neatly */
+      /* Trust line: centered and wrapped neatly */
       .hero-cta-trust {
         display: flex; flex-wrap: wrap;
         justify-content: center; align-items: center;
@@ -1349,21 +1346,48 @@
       }
       .hero-cta-dot { display: none; }
       .hero-cta-rating { gap: 4px; }
+
+      /* ── Mobile: show dashboard ABOVE CTA ── */
+      .hero .w { display: flex; flex-direction: column; align-items: center; }
+      .hero-eyebrow  { order: 1; }
+      .hero .w > h1  { order: 2; }
+      .hero-sub      { order: 3; }
+      .hero-banner-slot { order: 4; width: 100%; }
+      .hero-cta-card { order: 5; }
+      .hero-metrics  { order: 6; width: 100%; }
     }
     @media (max-width: 480px) {
       .hero { padding: 72px 0 32px; }
       .hero h1 { font-size: clamp(1.5rem, 7.5vw, 2rem); }
       .hero h1 span { white-space: nowrap; }
-      /* Stack CTA buttons vertically */
+      /* Stack CTA buttons vertically on very small screens */
       .hero-cta-btns { flex-direction: column; gap: 8px; }
       .tcta-btn-primary, .tcta-btn-secondary { flex: none; width: 100%; }
     }
 
     /* ── Hero banner: full width, no height cap ── */
     @media (max-width: 768px) {
-      .hero-banner-slot { margin-top: 20px; padding: 0; }
+      .hero-banner-slot { margin-top: 16px; margin-bottom: 20px; padding: 0; }
       .hero-banner-inner { border-radius: 0; border-left: none; border-right: none; }
       .hero-banner-img { width: 100%; max-height: none; object-fit: cover; object-position: top left; display: block; }
+    }
+
+    /* ── CTA button redesign: pill shape matching Image 2 ── */
+    @media (max-width: 768px) {
+      .hero-cta-btns { gap: 10px; }
+      .tcta-btn-primary {
+        flex: 1; padding: 13px 18px; font-size: 0.82rem; font-weight: 700;
+        background: var(--accent); color: #fff;
+        border-radius: 100px;
+        box-shadow: 0 4px 18px rgba(35,196,140,0.35);
+      }
+      .tcta-btn-primary:hover { background: #1fb07d; }
+      .tcta-btn-secondary {
+        flex: 1; padding: 13px 18px; font-size: 0.82rem; font-weight: 600;
+        background: transparent; color: var(--accent);
+        border: 1.5px solid var(--accent); border-radius: 100px;
+      }
+      .tcta-btn-secondary:hover { background: rgba(35,196,140,0.08); color: var(--accent); }
     }
 
     /* ── Section headings: prevent overflow ── */
