@@ -58,6 +58,8 @@
     .w { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
     .w-wide { max-width: var(--max-w-wide); margin: 0 auto; padding: 0 24px; }
 
+    .hero-br { display: none; }
+
     /* ── Nav ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 99;
@@ -1336,7 +1338,9 @@
       .hero { padding: 90px 0 40px; }
       .hero h1 { font-size: clamp(1.9rem, 7.5vw, 2.8rem); }
       .hero h1 span { white-space: nowrap; }
+      .hero-br { display: inline; }  /* Show line break on mobile */
       .hero-sub { display: none; }  /* Remove subtext on mobile */
+      .hero-eyebrow { font-size: 0.62rem; padding: 5px 14px; }  /* Smaller than title */
       .hero-cta-card { max-width: 100%; padding: 0 4px; gap: 10px; }
 
       /* ── Trust line: plain centered text, no flex ── */
@@ -1626,7 +1630,7 @@
   <section class="hero">
     <div class="w">
       <div class="hero-eyebrow">#1 net profit analytics for Shopify</div>
-      <h1>Know Your <span style="color:#23c48c;">Real Profit.</span> Not Shopify's Guess</h1>
+      <h1>Know Your <span style="color:#23c48c;">Real Profit.</span><br class="hero-br"/> Not Shopify's Guess</h1>
 
       <p class="hero-sub">Shopify shows you revenue. TrueProfit shows you what you keep. Connect in 30 seconds — Your live Profit & Loss, with every cost accounted for.</p>
 
