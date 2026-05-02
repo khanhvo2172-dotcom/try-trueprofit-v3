@@ -584,15 +584,20 @@
     }
     .pbadge::before { content: '✦ '; }
     .p-icon {
-      width: 48px; height: 48px; border-radius: 12px; margin-bottom: 16px;
+      width: 48px; height: 48px; border-radius: 12px;
       display: flex; align-items: center; justify-content: center;
       font-size: 1.4rem;
       background: linear-gradient(135deg, rgba(35,196,140,0.2), rgba(35,196,140,0.05));
       border: 1px solid rgba(35,196,140,0.2);
+      flex-shrink: 0;
+    }
+    /* Icon + name on same row */
+    .p-header {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 12px;
     }
     .p-name {
       font-family: var(--mono); font-size: 1rem; font-weight: 700;
-      color: #fff; margin-bottom: 6px;
+      color: #fff; margin-bottom: 0;
     }
     .p-desc {
       font-family: var(--mono); font-size: 0.7rem; color: rgba(255,255,255,0.45);
@@ -617,7 +622,7 @@
       display: block; text-align: center;
       font-family: var(--mono); font-size: 0.75rem; font-weight: 700;
       padding: 11px; border-radius: 8px; text-decoration: none;
-      margin-bottom: 24px; transition: 0.15s; letter-spacing: 0.01em;
+      margin-top: 20px; transition: 0.15s; letter-spacing: 0.01em;
     }
     .pcta.line {
       border: 1.5px solid rgba(35,196,140,0.5); color: #23c48c;
@@ -1332,32 +1337,38 @@
       .hero h1 { font-size: clamp(1.7rem, 6.5vw, 2.6rem); }
       .hero h1 span { white-space: nowrap; }
       .hero-sub { font-size: 0.78rem; max-width: 480px; }
-      .hero-cta-card { max-width: 100%; padding: 0 4px; }
-      .tcta-btn-primary { padding: 11px 16px; font-size: 0.82rem; }
-      .tcta-btn-secondary { padding: 11px 14px; font-size: 0.78rem; }
+      .hero-cta-card { max-width: 100%; padding: 0 4px; gap: 10px; }
+      /* Compact buttons */
+      .tcta-btn-primary { padding: 10px 14px; font-size: 0.78rem; }
+      .tcta-btn-secondary { padding: 10px 12px; font-size: 0.74rem; }
+      /* Trust line: always centered and wrapped neatly */
+      .hero-cta-trust {
+        display: flex; flex-wrap: wrap;
+        justify-content: center; align-items: center;
+        gap: 4px 8px; font-size: 0.66rem;
+      }
+      .hero-cta-dot { display: none; }
+      .hero-cta-rating { gap: 4px; }
     }
     @media (max-width: 480px) {
       .hero { padding: 72px 0 32px; }
       .hero h1 { font-size: clamp(1.5rem, 7.5vw, 2rem); }
       .hero h1 span { white-space: nowrap; }
+      /* Stack CTA buttons vertically */
       .hero-cta-btns { flex-direction: column; gap: 8px; }
       .tcta-btn-primary, .tcta-btn-secondary { flex: none; width: 100%; }
-      .hero-cta-trust { flex-wrap: wrap; gap: 5px; justify-content: center; font-size: 0.68rem; }
-      .hero-cta-dot { display: none; }
-      .hero-cta-card { gap: 10px; }
     }
 
-    /* ── Hero banner: let it breathe on mobile ── */
+    /* ── Hero banner: full width, no height cap ── */
     @media (max-width: 768px) {
-      .hero-banner-slot { margin-top: 20px; padding: 0 8px; }
-      .hero-banner-inner { border-radius: 10px; }
-      .hero-banner-img { max-height: none; width: 100%; object-fit: contain; }
+      .hero-banner-slot { margin-top: 20px; padding: 0; }
+      .hero-banner-inner { border-radius: 0; border-left: none; border-right: none; }
+      .hero-banner-img { width: 100%; max-height: none; object-fit: cover; object-position: top left; display: block; }
     }
 
     /* ── Section headings: prevent overflow ── */
     @media (max-width: 768px) {
       .sec h2 { font-size: clamp(1.5rem, 6vw, 2.2rem); }
-      .sec h2 br { display: none; }
       .bcta h2 { font-size: clamp(1.4rem, 6vw, 2rem); }
     }
 
@@ -2150,8 +2161,10 @@
 
         <!-- Basic -->
         <div class="pcard">
-          <div class="p-icon">💡</div>
-          <div class="p-name">Basic</div>
+          <div class="p-header">
+            <div class="p-icon">💡</div>
+            <div class="p-name">Basic</div>
+          </div>
           <div class="p-price">
             <span class="p-price-num">$35</span>
             <span class="p-price-unit">/month</span>
@@ -2166,13 +2179,15 @@
             <div class="p-feat"><span class="p-feat-check">✓</span> Custom Costs</div>
             <div class="p-feat"><span class="p-feat-x">✕</span> Product Analytics</div>
           </div>
-          <a href="https://trueprof.it/link/rJSTJHoV6K" class="pcta line" style="margin-top:auto;">Start 14 Days Free</a>
+          <a href="https://trueprof.it/link/rJSTJHoV6K" class="pcta line">Start 14 Days Free</a>
         </div>
 
         <!-- Advanced -->
         <div class="pcard">
-          <div class="p-icon">🚀</div>
-          <div class="p-name">Advanced</div>
+          <div class="p-header">
+            <div class="p-icon">🚀</div>
+            <div class="p-name">Advanced</div>
+          </div>
           <div class="p-price">
             <span class="p-price-num">$60</span>
             <span class="p-price-unit">/month</span>
@@ -2186,14 +2201,16 @@
             <div class="p-feat"><span class="p-feat-check">✓</span> P&amp;L Report</div>
             <div class="p-feat"><span class="p-feat-x">✕</span> Ad Sync Custom Rules</div>
           </div>
-          <a href="https://trueprof.it/link/rJSTJHoV6K" class="pcta line" style="margin-top:auto;">Start 14 Days Free</a>
+          <a href="https://trueprof.it/link/rJSTJHoV6K" class="pcta line">Start 14 Days Free</a>
         </div>
 
         <!-- Ultimate -->
         <div class="pcard feat">
           <div class="pbadge">Recommended</div>
-          <div class="p-icon">⚡</div>
-          <div class="p-name">Ultimate</div>
+          <div class="p-header">
+            <div class="p-icon">⚡</div>
+            <div class="p-name">Ultimate</div>
+          </div>
           <div class="p-price">
             <span class="p-price-num">$100</span>
             <span class="p-price-unit">/month</span>
@@ -2207,13 +2224,15 @@
             <div class="p-feat"><span class="p-feat-check">✓</span> Unlimited COGS Zones</div>
             <div class="p-feat"><span class="p-feat-x">✕</span> Marketing Attribution</div>
           </div>
-          <a href="https://trueprof.it/link/rJSTJHoV6K" class="pcta fill" style="margin-top:auto;">Start 14 Days Free</a>
+          <a href="https://trueprof.it/link/rJSTJHoV6K" class="pcta fill">Start 14 Days Free</a>
         </div>
 
         <!-- Enterprise -->
         <div class="pcard">
-          <div class="p-icon">🏆</div>
-          <div class="p-name">Enterprise</div>
+          <div class="p-header">
+            <div class="p-icon">🏆</div>
+            <div class="p-name">Enterprise</div>
+          </div>
           <div class="p-price">
             <span class="p-price-num">$200</span>
             <span class="p-price-unit">/month</span>
@@ -2227,7 +2246,7 @@
             <div class="p-feat"><span class="p-feat-check">✓</span> Unlimited Team Members</div>
             <div class="p-feat"><span class="p-feat-check">✓</span> Prioritized Support</div>
           </div>
-          <a href="https://trueprof.it/link/rJSTJHoV6K" class="pcta line" style="margin-top:auto;">Start 14 Days Free</a>
+          <a href="https://trueprof.it/link/rJSTJHoV6K" class="pcta line">Start 14 Days Free</a>
         </div>
 
       </div>
