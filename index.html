@@ -1205,8 +1205,8 @@
 
     @media (max-width: 768px) {
       .mm-top { flex-direction: column; gap: 32px; align-items: stretch; }
-      .mm-cards-wrap { justify-content: center; }
-      .mm-card { width: 165px; padding: 22px 20px; }
+      .mm-cards-wrap { justify-content: center; width: 100%; }
+      .mm-card { width: calc(50% - 6px); padding: 22px 18px; }
       .mm-val { font-size: 1.5rem; }
       .mm-growth-num { font-size: 1.8rem; }
     }
@@ -1328,27 +1328,30 @@
 
     /* ── Hero: shrink top padding, fix CTA layout ── */
     @media (max-width: 768px) {
-      .hero { padding: 90px 0 48px; }
-      .hero h1 { font-size: clamp(2.0rem, 8vw, 3rem); }
-      .hero-sub { font-size: 0.88rem; }
+      .hero { padding: 90px 0 40px; }
+      .hero h1 { font-size: clamp(1.7rem, 6.5vw, 2.6rem); }
+      .hero h1 span { white-space: nowrap; }
+      .hero-sub { font-size: 0.78rem; max-width: 480px; }
       .hero-cta-card { max-width: 100%; padding: 0 4px; }
+      .tcta-btn-primary { padding: 11px 16px; font-size: 0.82rem; }
+      .tcta-btn-secondary { padding: 11px 14px; font-size: 0.78rem; }
     }
     @media (max-width: 480px) {
-      .hero { padding: 78px 0 40px; }
-      .hero h1 { font-size: clamp(1.75rem, 9vw, 2.5rem); }
-      /* Stack CTA buttons vertically on very small screens */
-      .hero-cta-btns { flex-direction: column; }
+      .hero { padding: 72px 0 32px; }
+      .hero h1 { font-size: clamp(1.5rem, 7.5vw, 2rem); }
+      .hero h1 span { white-space: nowrap; }
+      .hero-cta-btns { flex-direction: column; gap: 8px; }
       .tcta-btn-primary, .tcta-btn-secondary { flex: none; width: 100%; }
-      /* Allow trust line to wrap */
-      .hero-cta-trust { flex-wrap: wrap; gap: 6px; justify-content: center; }
+      .hero-cta-trust { flex-wrap: wrap; gap: 5px; justify-content: center; font-size: 0.68rem; }
       .hero-cta-dot { display: none; }
+      .hero-cta-card { gap: 10px; }
     }
 
-    /* ── Hero banner: cap height so it doesn't dominate ── */
+    /* ── Hero banner: let it breathe on mobile ── */
     @media (max-width: 768px) {
-      .hero-banner-slot { margin-top: 24px; padding: 0 12px; }
+      .hero-banner-slot { margin-top: 20px; padding: 0 8px; }
       .hero-banner-inner { border-radius: 10px; }
-      .hero-banner-img { max-height: 220px; object-fit: cover; object-position: top; }
+      .hero-banner-img { max-height: none; width: 100%; object-fit: contain; }
     }
 
     /* ── Section headings: prevent overflow ── */
@@ -1360,11 +1363,22 @@
 
     /* ── Feature tabs: allow horizontal scroll on mobile ── */
     @media (max-width: 640px) {
+      /* Wrap the tabs in a relative container for the fade overlay */
+      .ftabs-wrap { position: relative; }
+      .ftabs-wrap::after {
+        content: '';
+        position: absolute; right: 0; top: 0; bottom: 8px;
+        width: 48px;
+        background: linear-gradient(to right, transparent, var(--bg));
+        pointer-events: none;
+        border-radius: 0 100px 100px 0;
+      }
       .ftabs {
         flex-wrap: nowrap;
         overflow-x: auto;
         justify-content: flex-start;
         padding-bottom: 8px;
+        padding-right: 48px;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
       }
@@ -1389,9 +1403,9 @@
 
     /* ── Before vs After: compact on mobile ── */
     @media (max-width: 768px) {
-      .vs-grid { gap: 0; }
-      .vs-after { border-radius: 10px; overflow: hidden; margin-top: 16px; }
-      .vs-after-img { max-height: 260px; }
+      .vs-grid { gap: 0; overflow: visible; }
+      .vs-after { border-radius: 10px; overflow: hidden; margin-top: 16px; max-width: 100%; }
+      .vs-after-img { max-height: none; width: 100%; max-width: 100%; object-fit: cover; }
     }
 
     /* ── Funnel layout improvements ── */
@@ -1443,7 +1457,7 @@
 
     /* ── Make More section ── */
     @media (max-width: 480px) {
-      .mm-card { width: 145px; padding: 18px 16px; }
+      .mm-card { padding: 18px 14px; }
       .mm-val { font-size: 1.35rem; }
       .mm-growth-num { font-size: 1.6rem; }
       .mm-growth-item { padding: 20px 12px; }
@@ -2024,7 +2038,7 @@
 
         <!-- Row 3: full-width image -->
         <div class="mm-scale-img-wrap">
-          <img src="./images/scale_7cea86cc.webp" alt="TrueProfit analytics dashboard" class="mm-scale-img" />
+          <img src="./images/scale_7cea86cc.webp" alt="TrueProfit analytics dashboard" class="mm-scale-img" id="mm-scale-img" />
         </div>
 
       </div><!-- /mm-bottom -->
@@ -2096,6 +2110,7 @@
     <div class="w">
       <h2>Everything you need to <em>track your Net Profit</em> accurately</h2>
 
+      <div class="ftabs-wrap">
       <div class="ftabs">
         <span class="ftab on" data-i="0">DASHBOARD</span>
         <span class="ftab" data-i="1">P&L REPORT</span>
@@ -2103,6 +2118,7 @@
         <span class="ftab" data-i="3">COSTS & EXPENSES</span>
         <span class="ftab" data-i="4">ADVERTISING ATTRIBUTION</span>
         <span class="ftab" data-i="5">LIFETIME VALUE</span>
+      </div>
       </div>
 
       <p class="fdesc" id="fdesc">Track revenue, costs, and net profit in real-time. Customize your dashboard to your needs.</p>
@@ -2136,13 +2152,12 @@
         <div class="pcard">
           <div class="p-icon">💡</div>
           <div class="p-name">Basic</div>
-          <div class="p-desc">The essential features to track your store's net profit.</div>
           <div class="p-price">
             <span class="p-price-num">$35</span>
             <span class="p-price-unit">/month</span>
           </div>
+          <div class="p-desc">The essential features to track your store's net profit.</div>
           <div class="p-orders">300 orders · $0.3 per extra order<br/>Maximum surcharge: $300</div>
-          <a href="https://trueprof.it/link/rJSTJHoV6K" class="pcta line">Start 14 Days Free</a>
           <div class="p-divider"></div>
           <div class="p-features">
             <div class="p-feat"><span class="p-feat-check">✓</span> Realtime profit dashboard</div>
@@ -2151,19 +2166,19 @@
             <div class="p-feat"><span class="p-feat-check">✓</span> Custom Costs</div>
             <div class="p-feat"><span class="p-feat-x">✕</span> Product Analytics</div>
           </div>
+          <a href="https://trueprof.it/link/rJSTJHoV6K" class="pcta line" style="margin-top:auto;">Start 14 Days Free</a>
         </div>
 
         <!-- Advanced -->
         <div class="pcard">
           <div class="p-icon">🚀</div>
           <div class="p-name">Advanced</div>
-          <div class="p-desc">The power to grow with data-based decisions.</div>
           <div class="p-price">
             <span class="p-price-num">$60</span>
             <span class="p-price-unit">/month</span>
           </div>
+          <div class="p-desc">The power to grow with data-based decisions.</div>
           <div class="p-orders">600 orders · $0.2 per extra order<br/>Maximum surcharge: $500</div>
-          <a href="https://trueprof.it/link/rJSTJHoV6K" class="pcta line">Start 14 Days Free</a>
           <div class="p-divider"></div>
           <div class="p-features">
             <div class="p-feat"><span class="p-feat-check">✓</span> Everything in Basic, plus:</div>
@@ -2171,6 +2186,7 @@
             <div class="p-feat"><span class="p-feat-check">✓</span> P&amp;L Report</div>
             <div class="p-feat"><span class="p-feat-x">✕</span> Ad Sync Custom Rules</div>
           </div>
+          <a href="https://trueprof.it/link/rJSTJHoV6K" class="pcta line" style="margin-top:auto;">Start 14 Days Free</a>
         </div>
 
         <!-- Ultimate -->
@@ -2178,13 +2194,12 @@
           <div class="pbadge">Recommended</div>
           <div class="p-icon">⚡</div>
           <div class="p-name">Ultimate</div>
-          <div class="p-desc">The insights to scale your businesses globally.</div>
           <div class="p-price">
             <span class="p-price-num">$100</span>
             <span class="p-price-unit">/month</span>
           </div>
+          <div class="p-desc">The insights to scale your businesses globally.</div>
           <div class="p-orders">1500 orders · $0.1 per extra order<br/>Maximum surcharge: $700</div>
-          <a href="https://trueprof.it/link/rJSTJHoV6K" class="pcta fill">Start 14 Days Free</a>
           <div class="p-divider"></div>
           <div class="p-features">
             <div class="p-feat"><span class="p-feat-check">✓</span> Everything in Advanced, plus:</div>
@@ -2192,19 +2207,19 @@
             <div class="p-feat"><span class="p-feat-check">✓</span> Unlimited COGS Zones</div>
             <div class="p-feat"><span class="p-feat-x">✕</span> Marketing Attribution</div>
           </div>
+          <a href="https://trueprof.it/link/rJSTJHoV6K" class="pcta fill" style="margin-top:auto;">Start 14 Days Free</a>
         </div>
 
         <!-- Enterprise -->
         <div class="pcard">
           <div class="p-icon">🏆</div>
           <div class="p-name">Enterprise</div>
-          <div class="p-desc">The complete package for elite sellers and brands.</div>
           <div class="p-price">
             <span class="p-price-num">$200</span>
             <span class="p-price-unit">/month</span>
           </div>
+          <div class="p-desc">The complete package for elite sellers and brands.</div>
           <div class="p-orders">3500 orders · $0.07 per extra order<br/>Maximum surcharge: $1000</div>
-          <a href="https://trueprof.it/link/rJSTJHoV6K" class="pcta line">Start 14 Days Free</a>
           <div class="p-divider"></div>
           <div class="p-features">
             <div class="p-feat"><span class="p-feat-check">✓</span> Everything in Ultimate, plus:</div>
@@ -2212,6 +2227,7 @@
             <div class="p-feat"><span class="p-feat-check">✓</span> Unlimited Team Members</div>
             <div class="p-feat"><span class="p-feat-check">✓</span> Prioritized Support</div>
           </div>
+          <a href="https://trueprof.it/link/rJSTJHoV6K" class="pcta line" style="margin-top:auto;">Start 14 Days Free</a>
         </div>
 
       </div>
