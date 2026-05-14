@@ -177,8 +177,8 @@
 
     /* Trust line */
     .hero-cta-trust {
-      display: flex; align-items: center; justify-content: flex-start;
-      gap: 7px; flex-wrap: nowrap;
+      display: flex; flex-direction: column; align-items: flex-start;
+      gap: 5px;
       font-family: var(--mono); font-size: 0.7rem; color: var(--text-3);
     }
     .hero-cta-rating { display: flex; align-items: center; gap: 5px; }
@@ -217,19 +217,16 @@
 
     /* ── Hero horizontal layout ── */
     .hero-layout {
-      display: flex; align-items: stretch; gap: 48px;
+      display: flex; align-items: center; gap: 48px;
     }
     .hero-left { flex: 6; min-width: 0; }
-    .hero-right {
-      flex: 4; min-width: 0;
-      display: flex; align-items: stretch;
-    }
+    .hero-right { flex: 4; min-width: 0; }
     .hero-right .hero-banner-inner {
-      width: 100%; height: 100%;
+      width: 100%;
       box-shadow: 0 20px 72px rgba(0,0,0,0.13);
     }
     .hero-right .hero-banner-img {
-      width: 100%; height: 100%; object-fit: cover; object-position: top left;
+      width: 100%; height: auto; display: block;
     }
 
     .hero-stats {
@@ -1079,7 +1076,7 @@
       .hero h1 { margin-left: auto; margin-right: auto; }
       .hero-sub { margin-left: auto; margin-right: auto; }
       .hero-cta-card { align-items: center; margin-left: auto; margin-right: auto; }
-      .hero-cta-trust { justify-content: center; }
+      .hero-cta-trust { align-items: center; }
       .ftabs { gap: 6px; }
       .ftab { font-size: 0.65rem; padding: 6px 10px; }
       .callout { justify-content: center; padding-right: 0; }
@@ -1664,7 +1661,6 @@
             </div>
             <div class="hero-cta-trust">
               <span class="hero-cta-rating"><span class="stars">★★★★★</span> <strong>5.0</strong> <span>(770+ reviews)</span> on <a href="https://trueprof.it/link/rJSTJHoV6K" class="appstore-link">Shopify App Store</a></span>
-              <span class="hero-cta-dot">·</span>
               <span>14-day free trial · No credit card required</span>
             </div>
           </div>
