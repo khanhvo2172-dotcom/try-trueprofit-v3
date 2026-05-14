@@ -96,7 +96,7 @@
     .nav-get:hover { background: #333; }
 
     /* ── Hero ── */
-    .hero { padding: 140px 0 80px; text-align: center; }
+    .hero { padding: 120px 0 60px; text-align: left; }
     .hero-eyebrow {
       font-family: var(--mono); font-size: 0.82rem; font-weight: 600;
       color: var(--accent); letter-spacing: 0.06em;
@@ -109,15 +109,12 @@
     }
     .hero h1 {
       font-family: var(--mono); font-weight: 700;
-      font-size: clamp(2.8rem, 6.0vw, 4.5rem); line-height: 1.2;
+      font-size: clamp(2.2rem, 4.5vw, 3.8rem); line-height: 1.2;
       letter-spacing: -0.02em; margin-bottom: 18px;
-      max-width: 1000px;
-      margin-left: auto;
-      margin-right: auto;
     }
     .hero-sub {
       font-family: var(--mono); font-size: 0.92rem; color: var(--text-2);
-      max-width: 560px; margin: 0 auto 36px; line-height: 1.75;
+      max-width: 520px; margin: 0 0 28px; line-height: 1.75;
     }
 
     /* ── Code block (shared) ── */
@@ -142,9 +139,9 @@
 
     /* ── Hero CTA Card ── */
     .hero-cta-card {
-      max-width: 480px; margin: 32px auto 0;
+      max-width: 440px; margin: 24px 0 0;
       display: flex; flex-direction: column; gap: 14px;
-      align-items: center;
+      align-items: flex-start;
     }
     .hero-cta-btns {
       display: flex; gap: 10px; width: 100%;
@@ -180,7 +177,7 @@
 
     /* Trust line */
     .hero-cta-trust {
-      display: flex; align-items: center; justify-content: center;
+      display: flex; align-items: center; justify-content: flex-start;
       gap: 7px; flex-wrap: nowrap;
       font-family: var(--mono); font-size: 0.7rem; color: var(--text-3);
     }
@@ -216,6 +213,20 @@
     }
     .hero-banner-hint {
       font-family: var(--mono); font-size: 0.68rem; color: var(--text-4);
+    }
+
+    /* ── Hero horizontal layout ── */
+    .hero-layout {
+      display: flex; align-items: center; gap: 56px;
+    }
+    .hero-left { flex: 1; min-width: 0; }
+    .hero-right {
+      flex: 1.1; min-width: 0;
+      display: flex; align-items: center;
+    }
+    .hero-right .hero-banner-inner {
+      width: 100%;
+      box-shadow: 0 20px 72px rgba(0,0,0,0.13);
     }
 
     .hero-stats {
@@ -1060,7 +1071,12 @@
       .dg { grid-template-columns: 1fr 1fr; }
       .ctbl { overflow-x: auto; }
       .ctbl table { min-width: 460px; }
-      .hero { padding: 115px 0 50px; }
+      .hero { padding: 100px 0 40px; text-align: center; }
+      .hero-layout { flex-direction: column; gap: 32px; }
+      .hero h1 { margin-left: auto; margin-right: auto; }
+      .hero-sub { margin-left: auto; margin-right: auto; }
+      .hero-cta-card { align-items: center; margin-left: auto; margin-right: auto; }
+      .hero-cta-trust { justify-content: center; }
       .ftabs { gap: 6px; }
       .ftab { font-size: 0.65rem; padding: 6px 10px; }
       .callout { justify-content: center; padding-right: 0; }
@@ -1629,32 +1645,32 @@
 
   <!-- Hero -->
   <section class="hero">
-    <div class="w">
-      <div class="hero-eyebrow">#1 net profit analytics for Shopify</div>
-      <h1>Know <span class="hero-your">Your </span><span style="color:#23c48c;">Real Profit.</span><br class="hero-br"/> Not Shopify's Guess</h1>
-
-      <p class="hero-sub">Shopify shows you revenue. TrueProfit shows you what you keep. Connect in 30 seconds — Your live Profit & Loss, with every cost accounted for.</p>
-
-      <div class="hero-cta-card">
-        <div class="hero-cta-btns">
-          <a href="https://trueprof.it/link/rJSTJHoV6K" class="tcta-btn-primary">
-            See My Real Profit →
-          </a>
-          <a href="https://app.trueprofit.io/demo?_bt=BAh7BkkiC19yYWlscwY6BkVUewhJIglkYXRhBjsAVEkiFmFwcC50cnVlcHJvZml0LmlvBjsARkkiCGV4cAY7AFRJIh0yMDI2LTA0LTEzVDE3OjIyOjQ4LjQ0MloGOwBUSSIIcHVyBjsAVEkiHnBlcm1hbmVudF9wYXNzd29yZF9ieXBhc3MGOwBG--831358f1bc826bfff0716120d901f5ad99d84038" class="tcta-btn-secondary">
-            View Demo Store
-          </a>
+    <div class="w-wide">
+      <div class="hero-layout">
+        <div class="hero-left">
+          <div class="hero-eyebrow">#1 net profit analytics for Shopify</div>
+          <h1>Know <span class="hero-your">Your </span><span style="color:#23c48c;">Real Profit.</span><br class="hero-br"/> Not Shopify's Guess</h1>
+          <p class="hero-sub">Shopify shows you revenue. TrueProfit shows you what you keep. Connect in 30 seconds — Your live Profit & Loss, with every cost accounted for.</p>
+          <div class="hero-cta-card">
+            <div class="hero-cta-btns">
+              <a href="https://trueprof.it/link/rJSTJHoV6K" class="tcta-btn-primary">
+                See My Real Profit →
+              </a>
+              <a href="https://app.trueprofit.io/demo?_bt=BAh7BkkiC19yYWlscwY6BkVUewhJIglkYXRhBjsAVEkiFmFwcC50cnVlcHJvZml0LmlvBjsARkkiCGV4cAY7AFRJIh0yMDI2LTA0LTEzVDE3OjIyOjQ4LjQ0MloGOwBUSSIIcHVyBjsAVEkiHnBlcm1hbmVudF9wYXNzd29yZF9ieXBhc3MGOwBG--831358f1bc826bfff0716120d901f5ad99d84038" class="tcta-btn-secondary">
+                View Demo Store
+              </a>
+            </div>
+            <div class="hero-cta-trust">
+              <span class="hero-cta-rating"><span class="stars">★★★★★</span> <strong>5.0</strong> on <a href="https://trueprof.it/link/rJSTJHoV6K" class="appstore-link">Shopify App Store</a></span>
+              <span class="hero-cta-dot">·</span>
+              <span>No credit card required</span>
+            </div>
+          </div>
         </div>
-        <div class="hero-cta-trust">
-          <span class="hero-cta-rating"><span class="stars">★★★★★</span> <strong>5.0</strong> on <a href="https://trueprof.it/link/rJSTJHoV6K" class="appstore-link">Shopify App Store</a></span>
-          <span class="hero-cta-dot">·</span>
-          <span>No credit card required</span>
-        </div>
-      </div>
-
-      <!-- Hero banner placeholder -->
-      <div class="hero-banner-slot">
-        <div class="hero-banner-inner">
-        <img src="./images/hero-banner-1-v2.png" alt="TrueProfit Dashboard" class="hero-banner-img" id="hero-banner-img" />
+        <div class="hero-right">
+          <div class="hero-banner-inner">
+            <img src="./images/hero-banner-1-v2.png" alt="TrueProfit Dashboard" class="hero-banner-img" id="hero-banner-img" />
+          </div>
         </div>
       </div>
 
