@@ -178,17 +178,27 @@
     /* Trust line */
     .hero-cta-trust {
       display: flex; flex-direction: column; align-items: flex-start;
-      gap: 7px;
-      font-family: var(--mono); font-size: 0.70rem; color: var(--text-3);
+      gap: 8px;
+      font-family: var(--mono);
     }
-    .hero-cta-rating { display: flex; align-items: center; gap: 5px; }
-    .hero-cta-rating strong { color: var(--text); }
-    .hero-cta-rating .stars { color: var(--accent); font-size: 0.68rem; letter-spacing: 1px; }
-    .hero-cta-dot { color: var(--text-4); }
+    .hero-trust-badge {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 8px; padding: 7px 13px;
+    }
+    .hero-trust-stars { color: var(--accent); font-size: 0.82rem; letter-spacing: 2px; }
+    .hero-trust-score { font-weight: 700; font-size: 0.84rem; color: var(--text); }
+    .hero-trust-pipe { color: var(--border); font-size: 1rem; }
+    .hero-trust-reviews { font-size: 0.70rem; color: var(--text-2); }
     .appstore-link {
       color: var(--text) !important; font-weight: 700 !important;
       text-decoration: underline !important;
     }
+    .hero-trust-trial {
+      display: flex; align-items: center; gap: 14px;
+      font-size: 0.68rem; color: var(--text-3);
+    }
+    .hero-trust-check { color: var(--accent); margin-right: 3px; }
 
     /* ── Hero Banner Slot ── */
     .hero-banner-slot {
@@ -1657,7 +1667,7 @@
     <div class="w-wide">
       <div class="hero-layout">
         <div class="hero-left">
-          <h1>The <span style="color:#23c48c;">#1 Profit Analytics App</span> For Shopify</h1>
+          <h1>The <span style="color:#23c48c;">#1 Net Profit Analytics App</span> For Shopify</h1>
           <p class="hero-sub">Shopify shows you revenue. TrueProfit shows you what you keep. Connect in 30 seconds — Your live Profit & Loss, with every cost accounted for.</p>
           <div class="hero-cta-card">
             <div class="hero-cta-btns">
@@ -1669,8 +1679,16 @@
               </a>
             </div>
             <div class="hero-cta-trust">
-              <span class="hero-cta-rating"><span class="stars">★★★★★</span> <strong>5.0</strong> <span>(770+ reviews)</span> on <a href="https://trueprof.it/link/rJSTJHoV6K" class="appstore-link">Shopify App Store</a></span>
-              <span>14-day free trial · No credit card required</span>
+              <div class="hero-trust-badge">
+                <span class="hero-trust-stars">★★★★★</span>
+                <span class="hero-trust-score">5.0</span>
+                <span class="hero-trust-pipe">|</span>
+                <span class="hero-trust-reviews">770+ reviews on <a href="https://trueprof.it/link/rJSTJHoV6K" class="appstore-link">Shopify App Store</a></span>
+              </div>
+              <div class="hero-trust-trial">
+                <span><span class="hero-trust-check">✓</span>14-day free trial</span>
+                <span><span class="hero-trust-check">✓</span>No credit card required</span>
+              </div>
             </div>
           </div>
         </div>
