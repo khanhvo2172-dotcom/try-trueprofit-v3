@@ -218,6 +218,7 @@
     /* ── Hero horizontal layout ── */
     .hero-layout {
       display: flex; align-items: center; gap: 48px;
+      min-height: calc(100vh - 180px);
     }
     .hero-left { flex: 6; min-width: 0; }
     .hero-right { flex: 6; min-width: 0; }
@@ -1072,7 +1073,7 @@
       .ctbl { overflow-x: auto; }
       .ctbl table { min-width: 460px; }
       .hero { padding: 100px 0 40px; text-align: center; }
-      .hero-layout { flex-direction: column; gap: 32px; }
+      .hero-layout { flex-direction: column; gap: 32px; min-height: unset; }
       .hero h1 { margin-left: auto; margin-right: auto; }
       .hero-sub { margin-left: auto; margin-right: auto; }
       .hero-cta-card { align-items: center; margin-left: auto; margin-right: auto; }
