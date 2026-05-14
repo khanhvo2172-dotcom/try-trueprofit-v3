@@ -178,18 +178,16 @@
     /* Trust line */
     .hero-cta-trust {
       display: flex; flex-direction: column; align-items: flex-start;
-      gap: 8px;
-      font-family: var(--mono);
+      gap: 8px; font-family: var(--mono);
     }
-    .hero-trust-badge {
-      display: inline-flex; align-items: center; gap: 9px;
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: 8px; padding: 7px 13px;
+    .hero-trust-rating {
+      display: flex; align-items: center; gap: 8px; font-size: 0.75rem;
     }
-    .hero-trust-stars { color: var(--accent); font-size: 0.82rem; letter-spacing: 2px; }
-    .hero-trust-score { font-weight: 700; font-size: 0.84rem; color: var(--text); }
-    .hero-trust-pipe { color: var(--border); font-size: 1rem; }
-    .hero-trust-reviews { font-size: 0.70rem; color: var(--text-2); }
+    .hero-trust-logo { height: 18px; width: auto; display: block; }
+    .hero-trust-score { font-weight: 700; color: var(--text); }
+    .hero-trust-stars { color: var(--accent); letter-spacing: 1.5px; font-size: 0.78rem; }
+    .hero-trust-sep { color: var(--text-4); }
+    .hero-trust-reviews { color: var(--text-2); }
     .appstore-link {
       color: var(--text) !important; font-weight: 700 !important;
       text-decoration: underline !important;
@@ -1679,10 +1677,11 @@
               </a>
             </div>
             <div class="hero-cta-trust">
-              <div class="hero-trust-badge">
-                <span class="hero-trust-stars">★★★★★</span>
+              <div class="hero-trust-rating">
+                <img src="./images/shopify-logo.png" alt="Shopify" class="hero-trust-logo" />
                 <span class="hero-trust-score">5.0</span>
-                <span class="hero-trust-pipe">|</span>
+                <span class="hero-trust-stars">★★★★★</span>
+                <span class="hero-trust-sep">·</span>
                 <span class="hero-trust-reviews">770+ reviews on <a href="https://trueprof.it/link/rJSTJHoV6K" class="appstore-link">Shopify App Store</a></span>
               </div>
               <div class="hero-trust-trial">
