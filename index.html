@@ -272,6 +272,12 @@
       font-size: 1.02rem;
       color: var(--text);
     }
+    .hero-eyebrow-left {
+      display: none;
+    }
+    .hero-eyebrow-right {
+      margin-bottom: 22px;
+    }
     .hero-eyebrow-muted { color: var(--text-2); }
     .hero-num-stamp {
       display: inline-flex;
@@ -507,6 +513,9 @@
     .hero-right {
       display: flex;
       align-items: center;
+      min-width: 0;
+    }
+    .hero-right-wrap {
       min-width: 0;
     }
     .hero-right .hero-banner-inner {
@@ -1905,6 +1914,12 @@
         gap: 42px;
         min-height: unset;
       }
+      .hero-eyebrow-left {
+        display: flex;
+      }
+      .hero-eyebrow-right {
+        display: none;
+      }
       .hero h1.hero-title {
         font-size: clamp(4rem, 10vw, 5.4rem);
       }
@@ -2094,7 +2109,7 @@
     <div class="w-wide">
       <div class="hero-layout">
         <div class="hero-left">
-          <div class="hero-eyebrow-row">
+          <div class="hero-eyebrow-row hero-eyebrow-left">
             <span class="hero-eyebrow-muted">The</span>
             <span class="hero-num-stamp">#1</span>
             <span>Profit Tracking App for</span>
@@ -2147,9 +2162,20 @@
             </div>
           </div>
         </div>
-        <div class="hero-right">
-          <div class="hero-banner-inner">
-            <img src="/images/hero-banner-1-v2.png" alt="TrueProfit Dashboard" class="hero-banner-img" id="hero-banner-img" />
+        <div class="hero-right-wrap">
+          <div class="hero-eyebrow-row hero-eyebrow-right">
+            <span class="hero-eyebrow-muted">The</span>
+            <span class="hero-num-stamp">#1</span>
+            <span>Profit Tracking App for</span>
+            <span class="hero-shopify-tag">
+              <img src="./images/shopify-logo.png" alt="" />
+              Shopify
+            </span>
+          </div>
+          <div class="hero-right">
+            <div class="hero-banner-inner">
+              <img src="/images/hero-banner-1-v2.png" alt="TrueProfit Dashboard" class="hero-banner-img" id="hero-banner-img" />
+            </div>
           </div>
         </div>
         <div class="hero-proof hero-proof-mobile" aria-label="TrueProfit proof points">
