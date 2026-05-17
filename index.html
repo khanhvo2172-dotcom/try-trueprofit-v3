@@ -347,13 +347,15 @@
       font-weight: 700;
     }
     .hero-cta-card {
-      max-width: 560px;
+      width: 100%;
+      max-width: 520px;
       gap: 0;
     }
     .hero-cta-btns {
       align-items: center;
       flex-wrap: wrap;
       gap: 18px;
+      width: 100%;
       margin-bottom: 20px;
     }
     .tcta-btn-primary,
@@ -366,6 +368,7 @@
       min-height: 50px;
     }
     .tcta-btn-primary {
+      flex: 1 1 0;
       padding: 14px 28px;
       background: #16a34a;
       color: #fff;
@@ -497,6 +500,9 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
       line-height: 1.35;
+    }
+    .hero-proof-mobile {
+      display: none;
     }
     .hero-right {
       display: flex;
@@ -1947,14 +1953,20 @@
         margin-left: 0;
         margin-right: 0;
         padding: 0;
+        max-width: none;
+        width: 100%;
       }
       .hero-cta-btns {
         flex-wrap: nowrap;
+        width: 100%;
       }
       .tcta-btn-primary {
-        flex: 0 0 auto;
+        flex: 1 1 auto;
         padding: 13px 12px;
         font-size: 0.76rem;
+      }
+      .hero-cta-rating {
+        flex: 0 0 auto;
       }
       .hero-cta-rating {
         padding-left: 14px;
@@ -1983,6 +1995,14 @@
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 18px 0;
+      }
+      .hero-proof-desktop {
+        display: none;
+      }
+      .hero-proof-mobile {
+        display: grid;
+        width: 100%;
+        margin-top: 24px;
       }
       .hero-proof-item:nth-child(odd) {
         padding-left: 0;
@@ -2106,7 +2126,7 @@
                 <span><span class="hero-trust-check" aria-hidden="true"></span>14-day free trial</span>
                 <span><span class="hero-trust-check" aria-hidden="true"></span>No credit card required</span>
               </div>
-              <div class="hero-proof" aria-label="TrueProfit proof points">
+              <div class="hero-proof hero-proof-desktop" aria-label="TrueProfit proof points">
                 <span class="hero-proof-item">
                   <span class="hero-proof-value">5.0/5</span>
                   <span class="hero-proof-label">Shopify App Rating</span>
@@ -2131,6 +2151,24 @@
           <div class="hero-banner-inner">
             <img src="/images/hero-banner-1-v2.png" alt="TrueProfit Dashboard" class="hero-banner-img" id="hero-banner-img" />
           </div>
+        </div>
+        <div class="hero-proof hero-proof-mobile" aria-label="TrueProfit proof points">
+          <span class="hero-proof-item">
+            <span class="hero-proof-value">5.0/5</span>
+            <span class="hero-proof-label">Shopify App Rating</span>
+          </span>
+          <span class="hero-proof-item">
+            <span class="hero-proof-value">770+</span>
+            <span class="hero-proof-label">Verified reviews</span>
+          </span>
+          <span class="hero-proof-item">
+            <span class="hero-proof-value">10,000+</span>
+            <span class="hero-proof-label">Shopify stores</span>
+          </span>
+          <span class="hero-proof-item">
+            <span class="hero-proof-value">$2.4B+</span>
+            <span class="hero-proof-label">Profit tracked</span>
+          </span>
         </div>
       </div>
     </div>
