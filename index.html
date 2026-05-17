@@ -353,7 +353,7 @@
     .hero-cta-btns {
       align-items: center;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 18px;
       margin-bottom: 20px;
     }
     .tcta-btn-primary,
@@ -380,6 +380,38 @@
       background: var(--bg-card);
       border: 1px solid rgba(26,26,26,0.14);
       color: var(--text);
+    }
+    .hero-cta-rating {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding-left: 18px;
+      border-left: 1px solid rgba(26,26,26,0.14);
+      font-family: var(--mono);
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+    .hero-cta-rating-top {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .hero-cta-rating-score {
+      font-family: 'Manrope', var(--sans);
+      font-size: 1.15rem;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .hero-cta-rating-stars {
+      color: #f4b400;
+      font-size: 0.82rem;
+      letter-spacing: -1px;
+    }
+    .hero-cta-rating-meta {
+      font-size: 0.72rem;
+      color: var(--text-3);
     }
     .hero-cta-trust {
       gap: 0;
@@ -1919,12 +1951,22 @@
       .hero-cta-btns {
         flex-wrap: nowrap;
       }
-      .tcta-btn-primary,
-      .tcta-btn-secondary {
-        flex: 1 1 0;
-        min-width: 0;
+      .tcta-btn-primary {
+        flex: 0 0 auto;
         padding: 13px 12px;
         font-size: 0.76rem;
+      }
+      .hero-cta-rating {
+        padding-left: 14px;
+      }
+      .hero-cta-rating-score {
+        font-size: 1rem;
+      }
+      .hero-cta-rating-stars {
+        font-size: 0.72rem;
+      }
+      .hero-cta-rating-meta {
+        font-size: 0.62rem;
       }
       .hero-cta-trust {
         display: block;
@@ -1978,6 +2020,12 @@
       }
       .hero-cta-btns {
         gap: 8px;
+      }
+      .hero-cta-rating {
+        padding-left: 10px;
+      }
+      .hero-cta-rating-meta {
+        white-space: normal;
       }
       .hero-proof-value::before {
         width: 18px;
@@ -2045,9 +2093,13 @@
               <a href="https://trueprof.it/link/rJSTJHoV6K" class="tcta-btn-primary">
                 Start Free Trial <span aria-hidden="true">&rarr;</span>
               </a>
-              <a href="https://app.trueprofit.io/demo?_bt=BAh7BkkiC19yYWlscwY6BkVUewhJIglkYXRhBjsAVEkiFmFwcC50cnVlcHJvZml0LmlvBjsARkkiCGV4cAY7AFRJIh0yMDI2LTA0LTEzVDE3OjIyOjQ4LjQ0MloGOwBUSSIIcHVyBjsAVEkiHnBlcm1hbmVudF9wYXNzd29yZF9ieXBhc3MGOwBG--831358f1bc826bfff0716120d901f5ad99d84038" class="tcta-btn-secondary">
-                View Demo Store
-              </a>
+              <div class="hero-cta-rating" aria-label="5.0 out of 5 rating from 770 plus Shopify reviews">
+                <div class="hero-cta-rating-top">
+                  <span class="hero-cta-rating-score">5.0</span>
+                  <span class="hero-cta-rating-stars" aria-hidden="true">★★★★★</span>
+                </div>
+                <div class="hero-cta-rating-meta">770+ Shopify reviews</div>
+              </div>
             </div>
             <div class="hero-cta-trust">
               <div class="hero-trust-trial">
