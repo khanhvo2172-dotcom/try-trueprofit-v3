@@ -8,7 +8,7 @@
   <link rel="icon" type="image/x-icon" href="./images/favicon-logo.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet" />
 
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -242,6 +242,239 @@
     }
     .hero-right .hero-banner-img {
       width: 100%; height: auto; display: block;
+    }
+
+    /* Refined hero */
+    .hero {
+      padding: 96px 0 52px;
+      background: var(--bg);
+    }
+    .hero-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(0, 1fr);
+      gap: 64px;
+      align-items: center;
+      min-height: calc(100vh - 150px);
+    }
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0;
+    }
+    .hero-eyebrow-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 26px;
+      font-family: var(--mono);
+      font-size: 1.02rem;
+      color: var(--text);
+    }
+    .hero-eyebrow-muted { color: var(--text-2); }
+    .hero-num-stamp {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 14px 6px 12px;
+      border: 2px solid var(--text);
+      border-radius: 8px;
+      background: transparent;
+      color: var(--text);
+      font-family: 'Manrope', var(--sans);
+      font-size: 1.18rem;
+      font-weight: 800;
+      line-height: 1;
+      transform: rotate(-2deg);
+    }
+    .hero-num-stamp::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 3px rgba(35,196,140,0.22);
+      flex: 0 0 auto;
+    }
+    .hero-shopify-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding-bottom: 2px;
+      border-bottom: 2px solid var(--accent);
+      color: #5e8e3e;
+      font-weight: 700;
+    }
+    .hero-shopify-tag img {
+      width: auto;
+      height: 20px;
+      display: block;
+    }
+    .hero h1.hero-title {
+      max-width: 620px;
+      margin: 0 0 28px;
+      font-family: 'Manrope', var(--sans);
+      font-size: clamp(4.6rem, 7.4vw, 6.5rem);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.045em;
+      color: var(--text);
+    }
+    .hero-title-mark {
+      position: relative;
+      display: inline-block;
+      letter-spacing: inherit;
+    }
+    .hero-title-mark svg {
+      position: absolute;
+      left: -2%;
+      bottom: -13px;
+      width: 104%;
+      height: 18px;
+      pointer-events: none;
+    }
+    .hero-sub {
+      max-width: 520px;
+      margin: 0 0 30px;
+      font-family: var(--mono);
+      font-size: 0.96rem;
+      line-height: 1.65;
+      color: var(--text-2);
+    }
+    .hero-sub b {
+      color: var(--text);
+      font-weight: 700;
+    }
+    .hero-cta-card {
+      max-width: 560px;
+      gap: 0;
+    }
+    .hero-cta-btns {
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .tcta-btn-primary,
+    .tcta-btn-secondary {
+      flex: 0 0 auto;
+      border-radius: 10px;
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      font-weight: 700;
+      min-height: 50px;
+    }
+    .tcta-btn-primary {
+      padding: 14px 28px;
+      background: #16a34a;
+      color: #fff;
+      box-shadow: 0 10px 30px -12px rgba(22,163,74,0.65);
+    }
+    .tcta-btn-primary:hover {
+      background: #138a3e;
+      box-shadow: 0 14px 36px -14px rgba(22,163,74,0.75);
+    }
+    .tcta-btn-secondary {
+      padding: 14px 22px;
+      background: var(--bg-card);
+      border: 1px solid rgba(26,26,26,0.14);
+      color: var(--text);
+    }
+    .hero-cta-trust {
+      gap: 0;
+      font-family: var(--mono);
+    }
+    .hero-trust-trial {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin: 2px 0 34px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .hero-trust-check {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      margin-right: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 3px rgba(35,196,140,0.22);
+      color: transparent;
+      vertical-align: 1px;
+    }
+    .hero-proof {
+      display: flex;
+      align-items: stretch;
+      flex-wrap: nowrap;
+      gap: 0;
+      max-width: 620px;
+      font-family: var(--mono);
+    }
+    .hero-proof-item {
+      flex: 1;
+      min-width: 0;
+      position: relative;
+      padding: 0 18px;
+    }
+    .hero-proof-item:first-child { padding-left: 0; }
+    .hero-proof-item + .hero-proof-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 1px;
+      height: 34px;
+      background: rgba(26,26,26,0.14);
+      transform: translateY(-50%);
+    }
+    .hero-proof-value {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 6px;
+      font-family: 'Manrope', var(--sans);
+      font-size: 1.32rem;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--text);
+    }
+    .hero-proof-value::before {
+      content: "\2713";
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #16a34a;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0;
+      flex: 0 0 auto;
+    }
+    .hero-proof-label {
+      display: block;
+      font-size: 0.64rem;
+      color: var(--text-3);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      line-height: 1.35;
+    }
+    .hero-right {
+      display: flex;
+      align-items: center;
+      min-width: 0;
+    }
+    .hero-right .hero-banner-inner {
+      width: 100%;
+      border-radius: 18px;
+      box-shadow: 0 24px 80px rgba(14,19,32,0.14);
     }
 
     .hero-stats {
@@ -1627,6 +1860,134 @@
       }
       footer { padding-bottom: max(28px, env(safe-area-inset-bottom)); }
     }
+
+    @media (max-width: 1100px) {
+      .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 42px;
+        min-height: unset;
+      }
+      .hero h1.hero-title {
+        font-size: clamp(4rem, 10vw, 5.4rem);
+      }
+      .hero-right {
+        max-width: 860px;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 84px 0 38px;
+        text-align: left;
+      }
+      .hero-layout {
+        gap: 30px;
+      }
+      .hero-left {
+        display: flex;
+      }
+      .hero-eyebrow-row {
+        justify-content: flex-start;
+        margin-bottom: 18px;
+        font-size: 0.82rem;
+      }
+      .hero-num-stamp {
+        font-size: 1rem;
+        padding: 5px 11px 5px 10px;
+      }
+      .hero h1.hero-title {
+        margin-left: 0;
+        margin-right: 0;
+        font-size: clamp(3.1rem, 13vw, 4.2rem);
+      }
+      .hero h1 span {
+        white-space: normal;
+      }
+      .hero-sub {
+        display: block;
+        margin-left: 0;
+        margin-right: 0;
+        font-size: 0.82rem;
+      }
+      .hero-cta-card {
+        align-items: stretch;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0;
+      }
+      .hero-cta-btns {
+        flex-wrap: nowrap;
+      }
+      .tcta-btn-primary,
+      .tcta-btn-secondary {
+        flex: 1 1 0;
+        min-width: 0;
+        padding: 13px 12px;
+        font-size: 0.76rem;
+      }
+      .hero-cta-trust {
+        display: block;
+        text-align: left;
+      }
+      .hero-trust-trial {
+        justify-content: flex-start;
+        gap: 14px;
+        margin-bottom: 26px;
+        font-size: 0.72rem;
+        line-height: 1.6;
+      }
+      .hero-proof {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px 0;
+      }
+      .hero-proof-item:nth-child(odd) {
+        padding-left: 0;
+      }
+      .hero-proof-item:nth-child(3)::before {
+        display: none;
+      }
+      .hero-proof-value {
+        font-size: 1.12rem;
+      }
+      .hero-right .hero-banner-inner {
+        border-radius: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        padding: 72px 0 32px;
+      }
+      .hero-eyebrow-row {
+        gap: 8px;
+        font-size: 0.72rem;
+      }
+      .hero-shopify-tag img {
+        height: 17px;
+      }
+      .hero h1.hero-title {
+        font-size: clamp(2.75rem, 14vw, 3.55rem);
+      }
+      .hero-title-mark svg {
+        bottom: -10px;
+      }
+      .hero-sub {
+        font-size: 0.78rem;
+      }
+      .hero-cta-btns {
+        gap: 8px;
+      }
+      .hero-proof-value::before {
+        width: 18px;
+        height: 18px;
+        font-size: 0.62rem;
+      }
+      .hero-proof-label {
+        font-size: 0.56rem;
+      }
+    }
   </style>
   <script src="https://t.contentsquare.net/uxa/3fae727e6a3af.js"></script>
 </head>
@@ -1665,68 +2026,60 @@
     <div class="w-wide">
       <div class="hero-layout">
         <div class="hero-left">
-          <h1>The <span style="color:#23c48c;">#1 Net Profit Analytics App</span> For Shopify</h1>
-          <p class="hero-sub">Shopify shows you revenue. TrueProfit shows you what you keep. Connect in 30 seconds — Your live Profit & Loss, with every cost accounted for.</p>
+          <div class="hero-eyebrow-row">
+            <span class="hero-eyebrow-muted">The</span>
+            <span class="hero-num-stamp">#1</span>
+            <span>Profit Tracking App for</span>
+            <span class="hero-shopify-tag">
+              <img src="./images/shopify-logo.png" alt="" />
+              Shopify
+            </span>
+          </div>
+          <h1 class="hero-title">
+            Stop guessing<br />
+            your <span class="hero-title-mark">profit.<svg viewBox="0 0 300 18" preserveAspectRatio="none" aria-hidden="true"><path d="M2 12 C 60 4, 140 4, 220 9 S 295 14, 298 8" stroke="#23c48c" stroke-width="4" fill="none" stroke-linecap="round"></path></svg></span>
+          </h1>
+          <p class="hero-sub">TrueProfit pulls your sales, ad spend, COGS, fees and refunds into <b>one live P&amp;L</b>. So you finally know what you keep - to the cent, in real time.</p>
           <div class="hero-cta-card">
             <div class="hero-cta-btns">
               <a href="https://trueprof.it/link/rJSTJHoV6K" class="tcta-btn-primary">
-                Start Free Trial →
+                Start Free Trial <span aria-hidden="true">&rarr;</span>
               </a>
               <a href="https://app.trueprofit.io/demo?_bt=BAh7BkkiC19yYWlscwY6BkVUewhJIglkYXRhBjsAVEkiFmFwcC50cnVlcHJvZml0LmlvBjsARkkiCGV4cAY7AFRJIh0yMDI2LTA0LTEzVDE3OjIyOjQ4LjQ0MloGOwBUSSIIcHVyBjsAVEkiHnBlcm1hbmVudF9wYXNzd29yZF9ieXBhc3MGOwBG--831358f1bc826bfff0716120d901f5ad99d84038" class="tcta-btn-secondary">
                 View Demo Store
               </a>
             </div>
             <div class="hero-cta-trust">
-              <div class="hero-trust-rating">
-                <img src="./images/shopify-logo.png" alt="Shopify" class="hero-trust-logo" />
-                <span class="hero-trust-score">5.0/5</span>
-                <span class="hero-trust-stars">★★★★★</span>
-                <span class="hero-trust-sep">from</span>
-                <span class="hero-trust-reviews">770+ reviews on <a href="https://trueprof.it/link/rJSTJHoV6K" class="appstore-link">Shopify App Store</a></span>
-              </div>
               <div class="hero-trust-trial">
-                <span><span class="hero-trust-check">✓</span>14-day free trial</span>
-                <span><span class="hero-trust-check">✓</span>No credit card required</span>
+                <span><span class="hero-trust-check" aria-hidden="true"></span>14-day free trial</span>
+                <span><span class="hero-trust-check" aria-hidden="true"></span>No credit card required</span>
+              </div>
+              <div class="hero-proof" aria-label="TrueProfit proof points">
+                <span class="hero-proof-item">
+                  <span class="hero-proof-value">5.0/5</span>
+                  <span class="hero-proof-label">Shopify App Rating</span>
+                </span>
+                <span class="hero-proof-item">
+                  <span class="hero-proof-value">770+</span>
+                  <span class="hero-proof-label">Verified reviews</span>
+                </span>
+                <span class="hero-proof-item">
+                  <span class="hero-proof-value">10,000+</span>
+                  <span class="hero-proof-label">Shopify stores</span>
+                </span>
+                <span class="hero-proof-item">
+                  <span class="hero-proof-value">$2.4B+</span>
+                  <span class="hero-proof-label">Profit tracked</span>
+                </span>
               </div>
             </div>
           </div>
         </div>
         <div class="hero-right">
           <div class="hero-banner-inner">
-            <img src="./images/hero-banner-1-v2.png" alt="TrueProfit Dashboard" class="hero-banner-img" id="hero-banner-img" />
+            <img src="/images/hero-banner-1-v2.png" alt="TrueProfit Dashboard" class="hero-banner-img" id="hero-banner-img" />
           </div>
         </div>
-      </div>
-
-      <div class="hero-metrics">
-        <div class="hero-metrics-label">TRUSTED BY SHOPIFY MERCHANTS WORLDWIDE</div>
-        <div class="hero-metrics-grid">
-          <div class="hm-card">
-            <div class="hm-num">70,000<span class="hm-sup">+</span></div>
-            <div class="hm-label">Stores worldwide</div>
-          </div>
-          <div class="hm-card">
-            <div class="hm-num">$98<span class="hm-sup">B</span></div>
-            <div class="hm-label">Revenue tracked</div>
-          </div>
-          <div class="hm-card">
-            <div class="hm-num">$2.6<span class="hm-sup">B</span></div>
-            <div class="hm-label">Ad spend tracked</div>
-          </div>
-          <div class="hm-card hm-card-accent">
-            <div class="hm-num">3.5<span class="hm-sup">hrs+</span></div>
-            <div class="hm-label">Saved per week</div>
-          </div>
-          <div class="hm-card hm-card-accent">
-            <div class="hm-num">+27.6<span class="hm-sup">%</span></div>
-            <div class="hm-label">Net profit improvement</div>
-          </div>
-          <div class="hm-card hm-card-accent">
-            <div class="hm-num">+42.7<span class="hm-sup">%</span></div>
-            <div class="hm-label">Net margin improvement</div>
-          </div>
-        </div>
-        <div class="hm-source">Aggregate data from TrueProfit customers · 2025</div>
       </div>
     </div>
   </section>
